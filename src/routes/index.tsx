@@ -381,6 +381,11 @@ const tx: Record<Lang, Record<string, string>> = {
     supportersEyebrow: "Allies of the cause",
     supportersH2: "Who supports legal entry",
     supportersP: "From Doge to Shiba, through the very tweet that started it all — the community that believes in doing things the right way.",
+    pumpfunEyebrow: "Pump.fun",
+    pumpfunH2: "Challenges & Rewards",
+    pumpfunP: "Join the official $LEGAL community on Pump.fun. Take part in weekly challenges, earn token rewards and climb the engagement leaderboard.",
+    pumpfunBtn: "Join Pump.fun Community →",
+    pumpfunNote: "New challenges every week. Rewards paid in $LEGAL.",
   },
 };
 
