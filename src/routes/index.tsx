@@ -182,18 +182,78 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 
 function Index() {
   const [copied, setCopied] = useState(false);
+  const [confetti, setConfetti] = useState<Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
   const ca = "COLE_O_ENDERECO_DO_CONTRATO_AQUI";
 
   const copy = () => {
     navigator.clipboard?.writeText(ca);
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
+    fireConfetti();
   };
 
+  const fireConfetti = () => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const colors = ["#F4C94A", "#1A7A4C", "#C9252B", "#F2A341", "#F5F1E8"];
+    const pieces = Array.from({ length: 70 }, (_, i) => ({
+      id: Date.now() + i,
+      left: Math.random() * 100,
+      bg: colors[i % colors.length],
+      delay: Math.random() * 0.4,
+      dur: 2.4 + Math.random() * 1.8,
+      rot: Math.random() * 360,
+    }));
+    setConfetti(pieces);
+    setTimeout(() => setConfetti([]), 5000);
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const targets = rootRef.current?.querySelectorAll<HTMLElement>(".reveal, .case-file, .hero-art") ?? [];
+    if (reduce) {
+      targets.forEach((el) => el.classList.add("in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="legal-root">
+    <div className="legal-root" ref={rootRef}>
       <style>{css}</style>
       <div className="bg-lines" />
+      {confetti.length > 0 && (
+        <div className="confetti-layer" aria-hidden="true">
+          {confetti.map((c) => (
+            <span
+              key={c.id}
+              className="confetti-piece"
+              style={{
+                left: `${c.left}%`,
+                background: c.bg,
+                transform: `rotate(${c.rot}deg)`,
+                animationDelay: `${c.delay}s`,
+                animationDuration: `${c.dur}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
 
       <nav className="legal-nav">
         <div className="nav-brand">
