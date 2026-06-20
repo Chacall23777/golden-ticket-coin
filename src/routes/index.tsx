@@ -296,12 +296,12 @@ function Index() {
       </section>
 
       <section className="tweet-section">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Documento fundador</span>
           <h2>O tweet que inspirou tudo</h2>
         </div>
         <div className="tweet-grid">
-          <div className="tweet-card">
+          <div className="tweet-card reveal">
             <img src={tweetAsset.url} alt="Tweet de Elon Musk sobre imigração legal" />
           </div>
           <div>
@@ -316,7 +316,7 @@ function Index() {
       </section>
 
       <section id="historia" className="story">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Processo nº LE-2026-001</span>
           <h2>O dossiê do $LEGAL</h2>
           <p>Toda moeda tem uma origem. A nossa é um arquivo de três páginas — e a última ainda está sendo escrita por quem entrar agora.</p>
@@ -347,46 +347,46 @@ function Index() {
       </section>
 
       <section className="gallery">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Arquivo visual</span>
           <h2>Memes oficiais do processo</h2>
           <p>Cada imagem é um carimbo. Cada carimbo é uma piada interna que virou cultura.</p>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-item"><img src={memeQueue} alt="Fila de approval" loading="lazy" /><span className="tag">Fila oficial</span></div>
-          <div className="gallery-item"><img src={memeStamp} alt="Carimbo APPROVED" loading="lazy" /><span className="tag">Carimbo final</span></div>
-          <div className="gallery-item"><img src={memeOfficer} alt="Oficial Pepe" loading="lazy" /><span className="tag">O oficial</span></div>
-          <div className="gallery-item"><img src={memeGateway} alt="Portão Legal Entry" loading="lazy" /><span className="tag">A travessia</span></div>
-          <div className="gallery-item"><img src={memeDossier} alt="Dossiê aberto" loading="lazy" /><span className="tag">O dossiê</span></div>
-          <div className="gallery-item"><img src={tweetAsset.url} alt="Tweet fundador" loading="lazy" /><span className="tag">Documento fundador</span></div>
+          <div className="gallery-item reveal"><img src={memeQueue} alt="Fila de approval" loading="lazy" /><span className="tag">Fila oficial</span></div>
+          <div className="gallery-item reveal"><img src={memeStamp} alt="Carimbo APPROVED" loading="lazy" /><span className="tag">Carimbo final</span></div>
+          <div className="gallery-item reveal"><img src={memeOfficer} alt="Oficial Pepe" loading="lazy" /><span className="tag">O oficial</span></div>
+          <div className="gallery-item reveal"><img src={memeGateway} alt="Portão Legal Entry" loading="lazy" /><span className="tag">A travessia</span></div>
+          <div className="gallery-item reveal"><img src={memeDossier} alt="Dossiê aberto" loading="lazy" /><span className="tag">O dossiê</span></div>
+          <div className="gallery-item reveal"><img src={tweetAsset.url} alt="Tweet fundador" loading="lazy" /><span className="tag">Documento fundador</span></div>
         </div>
       </section>
 
       <section id="howto" className="howto">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Formulário de entrada</span>
           <h2>Como comprar $LEGAL</h2>
           <p>Quatro carimbos até a aprovação final. Nenhum deles exige fila de verdade.</p>
         </div>
         <div className="steps">
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 01</span>
             <h4>Baixe uma carteira</h4>
             <p>Instale a Phantom (ou a carteira Solana de sua preferência) no celular ou como extensão do navegador.</p>
             <a className="link" href="https://phantom.app" target="_blank" rel="noreferrer">Baixar Phantom →</a>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 02</span>
             <h4>Consiga SOL</h4>
             <p>Compre SOL direto na carteira, transfira de outra carteira, ou compre numa exchange e envie para a sua.</p>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 03</span>
             <h4>Acesse a Raydium</h4>
             <p>Vá até raydium.io (ou Jup.ag) para trocar seu SOL por $LEGAL com a liquidez disponível.</p>
             <a className="link" href="https://raydium.io" target="_blank" rel="noreferrer">Abrir Raydium →</a>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 04</span>
             <h4>Cole o contrato e troque</h4>
             <p>Cole o endereço do contrato (CA) abaixo, confirme a troca e pronto: entrada aprovada.</p>
@@ -396,12 +396,12 @@ function Index() {
       </section>
 
       <section id="tokenomics" className="tokenomics">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Certificado oficial</span>
           <h2>Tokenomics</h2>
           <p>Sem alocação escondida para a equipe, sem imposto de compra ou venda.</p>
         </div>
-        <div className="ledger">
+        <div className="ledger reveal">
           <div className="ledger-top">
             <span>certificado nº LE-0001</span>
             <span>rede: solana</span>
@@ -420,7 +420,7 @@ function Index() {
       </section>
 
       <section id="community" className="community">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Junte-se ao processo</span>
           <h2>A fila está aberta</h2>
           <p>Acompanhe o caso, converse com outros holders e fique de olho na liquidez em tempo real.</p>
