@@ -176,6 +176,14 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
   100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
 }
 
+.pumpfun{background:var(--navy);}
+.pumpfun-card{max-width:800px; margin:0 auto; background: linear-gradient(135deg, rgba(244,201,74,0.08) 0%, rgba(11,31,58,0.6) 100%); border:1px solid rgba(244,201,74,0.25); border-radius:8px; padding:48px 40px; text-align:center; display:flex; flex-direction:column; gap:18px; align-items:center;}
+.pumpfun-card .pumpfun-seal{width:64px;height:64px;border-radius:50%;border:3px solid var(--gold); display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gold);font-family:var(--mono); margin:0 auto;}
+.pumpfun-card h3{font-family:var(--serif); font-size:clamp(24px,3.5vw,34px); color:var(--paper);}
+.pumpfun-card p{color:rgba(245,241,232,0.75); font-size:16px; line-height:1.65; max-width:560px;}
+.pumpfun-card .btn-primary{font-size:15px; padding:18px 36px; margin-top:8px;}
+.pumpfun-note{font-family:var(--mono); font-size:12px; color:var(--gold-deep); letter-spacing:1.5px; margin-top:8px;}
+
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
   .case-file .stamp, .floating-stamp{opacity:1 !important; transform:rotate(-8deg) scale(1) !important; animation:none !important;}
