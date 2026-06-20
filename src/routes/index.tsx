@@ -645,6 +645,20 @@ function Index() {
         </div>
       </section>
 
+      <section id="pumpfun" className="pumpfun">
+        <div className="section-head reveal">
+          <span className="eyebrow">{t.pumpfunEyebrow}</span>
+          <h2>{t.pumpfunH2}</h2>
+        </div>
+        <div className="pumpfun-card reveal">
+          <div className="pumpfun-seal">$L</div>
+          <h3>{t.pumpfunH2}</h3>
+          <p>{t.pumpfunP}</p>
+          <a className="btn-primary" href="#" target="_blank" rel="noreferrer" onClick={fireConfetti}>{t.pumpfunBtn}</a>
+          <span className="pumpfun-note">{t.pumpfunNote}</span>
+        </div>
+      </section>
+
       <section id="community" className="community">
         <div className="section-head reveal">
           <span className="eyebrow">{t.communityEyebrow}</span>
