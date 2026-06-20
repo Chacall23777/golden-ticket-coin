@@ -7,6 +7,10 @@ import memeStamp from "@/assets/meme-stamp.jpg";
 import memeOfficer from "@/assets/meme-officer.jpg";
 import memeGateway from "@/assets/meme-gateway.jpg";
 import memeDossier from "@/assets/meme-dossier.jpg";
+import memeShibaOfficer from "@/assets/meme-shiba-officer.jpg";
+import memeDogePassport from "@/assets/meme-doge-passport.jpg";
+import memeDogeRally from "@/assets/meme-doge-rally.jpg";
+import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,6 +46,9 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .nav-links a{opacity:0.8; transition:opacity .2s;}
 .nav-links a:hover{opacity:1; color:var(--gold);}
 .nav-cta{background:var(--gold); color:var(--navy-deep); padding:10px 22px; border-radius:2px; font-size:13px; letter-spacing:1px; text-transform:uppercase; font-weight:700;}
+.lang-toggle{display:flex; gap:6px; align-items:center; font-family:var(--mono); font-size:12px;}
+.lang-toggle button{background:transparent; border:1px solid rgba(244,201,74,0.35); color:var(--paper); padding:6px 10px; border-radius:3px; cursor:pointer; font-size:11px; letter-spacing:1px;}
+.lang-toggle button.active{background:var(--gold); color:var(--navy-deep); border-color:var(--gold);}
 @media (max-width:900px){ .nav-links{display:none;} }
 
 .hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:150px 5vw 80px !important;
@@ -177,14 +184,208 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
   .ticker-strip .track{animation:none !important;}
   .confetti-layer{display:none !important;}
 }
-
 `;
 
+type Lang = "pt" | "en";
+
+const tx: Record<Lang, Record<string, string>> = {
+  pt: {
+    navStory: "A história",
+    navHowto: "Como comprar",
+    navTokenomics: "Tokenomics",
+    navCommunity: "Comunidade",
+    navCta: "Comprar $LEGAL",
+    heroEyebrow: "Solana · entrada 100% legal",
+    heroH1a: "A porta certa ",
+    heroH1b: "sempre abre.",
+    heroLead: "$LEGAL nasceu de uma ideia simples: o caminho certo deveria ser o caminho fácil. Sem atalho, sem burocracia escondida, sem letra miúda — só um carimbo de aprovado e seguir em frente.",
+    heroBtnPrimary: "Comprar $LEGAL",
+    heroBtnSecondary: "Ler a história",
+    ticker1: "★ ENTRADA APROVADA",
+    ticker2: "· $LEGAL ·",
+    ticker3: "★ NA FILA CERTA",
+    ticker4: "· SOLANA ·",
+    ticker5: "★ CARIMBADO E LIBERADO",
+    ticker6: "· LP QUEIMADA ·",
+    tweetEyebrow: "Documento fundador",
+    tweetH2: "O tweet que inspirou tudo",
+    tweetQuote: '"Imigração legal pra gente honesta, trabalhadora e talentosa devia ser <em>fácil</em>. E imigração ilegal devia ser <em>difícil</em>."',
+    tweetP: "Trocamos \"imigração\" por \"memecoin\" e o jogo virou. $LEGAL é o token de quem entra pela porta da frente.",
+    storyEyebrow: "Processo nº LE-2026-001",
+    storyH2: "O dossiê do $LEGAL",
+    storyP: "Toda moeda tem uma origem. A nossa é um arquivo de três páginas — e a última ainda está sendo escrita por quem entrar agora.",
+    case1No: "Página 1 — Análise inicial",
+    case1Stamp: "Aprovado",
+    case1H3: "O caminho difícil, feito do jeito certo",
+    case1P: "$LEGAL representa quem faz tudo na ordem certa: pede, espera, prova, e só então atravessa a porta. Não é sobre ser rápido. É sobre ser correto — e ainda assim chegar lá.",
+    case1Alt: "Pepe oficial carimbando LEGAL",
+    case2No: "Página 2 — O que rejeitamos",
+    case2Stamp: "Negado",
+    case2H3: "Atalhos, promessas vazias e letra miúda",
+    case2P: "Todo projeto que promete demais e explica de menos recebe o mesmo selo aqui: negado. $LEGAL não vende milagre — vende um processo transparente, do contrato à liquidez.",
+    case2Alt: "Dossiê com carimbos approved e denied",
+    case3No: "Página 3 — Status atual",
+    case3Stamp: "Em andamento",
+    case3H3: "A fila continua — e você pode entrar nela",
+    case3P: "O dossiê do $LEGAL está aberto. Cada novo holder é mais uma entrada aprovada nesse arquivo. A história está sendo escrita agora, com quem decide entrar pela porta certa.",
+    case3Alt: "Doge, Pepe e astronauta atravessando o portão LEGAL ENTRY",
+    galleryEyebrow: "Arquivo visual",
+    galleryH2: "Memes oficiais do processo",
+    galleryP: "Cada imagem é um carimbo. Cada carimbo é uma piada interna que virou cultura.",
+    howtoEyebrow: "Formulário de entrada",
+    howtoH2: "Como comprar $LEGAL",
+    howtoP: "Quatro carimbos até a aprovação final. Nenhum deles exige fila de verdade.",
+    step1Stage: "Carimbo 01",
+    step1H4: "Baixe uma carteira",
+    step1P: "Instale a Phantom (ou a carteira Solana de sua preferência) no celular ou como extensão do navegador.",
+    step1Link: "Baixar Phantom →",
+    step2Stage: "Carimbo 02",
+    step2H4: "Consiga SOL",
+    step2P: "Compre SOL direto na carteira, transfira de outra carteira, ou compre numa exchange e envie para a sua.",
+    step3Stage: "Carimbo 03",
+    step3H4: "Acesse a Raydium",
+    step3P: "Vá até raydium.io (ou Jup.ag) para trocar seu SOL por $LEGAL com a liquidez disponível.",
+    step3Link: "Abrir Raydium →",
+    step4Stage: "Carimbo 04",
+    step4H4: "Cole o contrato e troque",
+    step4P: "Cole o endereço do contrato (CA) abaixo, confirme a troca e pronto: entrada aprovada.",
+    step4Link: "Ver o contrato ↓",
+    tokenomicsEyebrow: "Certificado oficial",
+    tokenomicsH2: "Tokenomics",
+    tokenomicsP: "Sem alocação escondida para a equipe, sem imposto de compra ou venda.",
+    ledgerCert: "certificado nº LE-0001",
+    ledgerNet: "rede: solana",
+    labelSupply: "Supply total",
+    valueSupply: "1.000.000.000 $LEGAL",
+    labelTax: "Taxa de compra/venda",
+    valueTax: "0%",
+    labelLp: "Liquidez",
+    valueLp: "Queimada (LP burnt)",
+    labelCa: "Endereço do contrato (CA)",
+    copyBtn: "Copiar",
+    copiedBtn: "Copiado ✓",
+    communityEyebrow: "Junte-se ao processo",
+    communityH2: "A fila está aberta",
+    communityP: "Acompanhe o caso, converse com outros holders e fique de olho na liquidez em tempo real.",
+    footerDisclaimer: "$LEGAL é um memecoin sem valor intrínseco garantido. Nada aqui é aconselhamento financeiro.<br/>Pesquise antes de investir e só aplique o que estiver disposto a perder.",
+    footerFine: "© 2026 $LEGAL. Todos os direitos reservados. Este site é uma peça de identidade de comunidade e não constitui oferta de valores mobiliários em nenhuma jurisdição.",
+    galleryTag1: "Fila oficial",
+    galleryTag2: "Carimbo final",
+    galleryTag3: "O oficial",
+    galleryTag4: "A travessia",
+    galleryTag5: "O dossiê",
+    galleryTag6: "Documento fundador",
+    galleryTag7: "Shiba Oficial",
+    galleryTag8: "Doge Passport",
+    galleryTag9: "Rally Doge",
+    galleryTag10: "Elon Approved",
+    supportersEyebrow: "Aliados da causa",
+    supportersH2: "Quem apoia a entrada legal",
+    supportersP: "Desde o Doge até o Shiba, passando pelo próprio tweet que originou tudo — a comunidade que acredita em fazer as coisas do jeito certo.",
+  },
+  en: {
+    navStory: "The Story",
+    navHowto: "How to Buy",
+    navTokenomics: "Tokenomics",
+    navCommunity: "Community",
+    navCta: "Buy $LEGAL",
+    heroEyebrow: "Solana · 100% legal entry",
+    heroH1a: "The right door ",
+    heroH1b: "always opens.",
+    heroLead: "$LEGAL was born from a simple idea: the right path should be the easy path. No shortcuts, no hidden bureaucracy, no fine print — just an approved stamp and moving forward.",
+    heroBtnPrimary: "Buy $LEGAL",
+    heroBtnSecondary: "Read the story",
+    ticker1: "★ APPROVED ENTRY",
+    ticker2: "· $LEGAL ·",
+    ticker3: "★ RIGHT QUEUE",
+    ticker4: "· SOLANA ·",
+    ticker5: "★ STAMPED & RELEASED",
+    ticker6: "· LP BURNT ·",
+    tweetEyebrow: "Founding document",
+    tweetH2: "The tweet that inspired everything",
+    tweetQuote: '"Legal immigration for honest, hardworking and talented people should be <em>easy</em>. And illegal immigration should be <em>hard</em>."',
+    tweetP: 'We swapped "immigration" for "memecoin" and the game changed. $LEGAL is the token for those who enter through the front door.',
+    storyEyebrow: "Case #LE-2026-001",
+    storyH2: "The $LEGAL dossier",
+    storyP: "Every coin has an origin. Ours is a three-page file — and the last one is still being written by whoever enters now.",
+    case1No: "Page 1 — Initial analysis",
+    case1Stamp: "Approved",
+    case1H3: "The hard way, done right",
+    case1P: "$LEGAL represents those who do everything in the right order: ask, wait, prove, and only then cross the door. It's not about being fast. It's about being right — and still getting there.",
+    case1Alt: "Pepe officer stamping LEGAL",
+    case2No: "Page 2 — What we reject",
+    case2Stamp: "Denied",
+    case2H3: "Shortcuts, empty promises and fine print",
+    case2P: "Every project that promises too much and explains too little gets the same stamp here: denied. $LEGAL doesn't sell miracles — it sells a transparent process, from contract to liquidity.",
+    case2Alt: "Dossier with approved and denied stamps",
+    case3No: "Page 3 — Current status",
+    case3Stamp: "In progress",
+    case3H3: "The queue continues — and you can join it",
+    case3P: "The $LEGAL dossier is open. Every new holder is one more approved entry in this file. History is being written now, by those who decide to enter through the right door.",
+    case3Alt: "Doge, Pepe and astronaut crossing the LEGAL ENTRY gate",
+    galleryEyebrow: "Visual archive",
+    galleryH2: "Official memes of the process",
+    galleryP: "Every image is a stamp. Every stamp is an inside joke that became culture.",
+    howtoEyebrow: "Entry form",
+    howtoH2: "How to buy $LEGAL",
+    howtoP: "Four stamps until final approval. None of them require a real queue.",
+    step1Stage: "Stamp 01",
+    step1H4: "Download a wallet",
+    step1P: "Install Phantom (or your preferred Solana wallet) on mobile or as a browser extension.",
+    step1Link: "Download Phantom →",
+    step2Stage: "Stamp 02",
+    step2H4: "Get SOL",
+    step2P: "Buy SOL directly in the wallet, transfer from another wallet, or buy on an exchange and send to yours.",
+    step3Stage: "Stamp 03",
+    step3H4: "Go to Raydium",
+    step3P: "Head to raydium.io (or Jup.ag) to swap your SOL for $LEGAL with available liquidity.",
+    step3Link: "Open Raydium →",
+    step4Stage: "Stamp 04",
+    step4H4: "Paste the contract and swap",
+    step4P: "Paste the contract address (CA) below, confirm the swap and done: approved entry.",
+    step4Link: "View contract ↓",
+    tokenomicsEyebrow: "Official certificate",
+    tokenomicsH2: "Tokenomics",
+    tokenomicsP: "No hidden team allocation, no buy or sell tax.",
+    ledgerCert: "certificate #LE-0001",
+    ledgerNet: "network: solana",
+    labelSupply: "Total supply",
+    valueSupply: "1,000,000,000 $LEGAL",
+    labelTax: "Buy/sell tax",
+    valueTax: "0%",
+    labelLp: "Liquidity",
+    valueLp: "Burnt (LP burnt)",
+    labelCa: "Contract address (CA)",
+    copyBtn: "Copy",
+    copiedBtn: "Copied ✓",
+    communityEyebrow: "Join the process",
+    communityH2: "The queue is open",
+    communityP: "Follow the case, chat with other holders and keep an eye on real-time liquidity.",
+    footerDisclaimer: "$LEGAL is a memecoin with no guaranteed intrinsic value. Nothing here is financial advice.<br/>Do your own research and only invest what you are willing to lose.",
+    footerFine: "© 2026 $LEGAL. All rights reserved. This site is a community identity piece and does not constitute a securities offer in any jurisdiction.",
+    galleryTag1: "Official queue",
+    galleryTag2: "Final stamp",
+    galleryTag3: "The officer",
+    galleryTag4: "The crossing",
+    galleryTag5: "The dossier",
+    galleryTag6: "Founding doc",
+    galleryTag7: "Shiba Officer",
+    galleryTag8: "Doge Passport",
+    galleryTag9: "Doge Rally",
+    galleryTag10: "Elon Approved",
+    supportersEyebrow: "Allies of the cause",
+    supportersH2: "Who supports legal entry",
+    supportersP: "From Doge to Shiba, through the very tweet that started it all — the community that believes in doing things the right way.",
+  },
+};
+
 function Index() {
+  const [lang, setLang] = useState<Lang>("pt");
   const [copied, setCopied] = useState(false);
   const [confetti, setConfetti] = useState<Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>>([]);
   const rootRef = useRef<HTMLDivElement>(null);
   const ca = "COLE_O_ENDERECO_DO_CONTRATO_AQUI";
+  const t = tx[lang];
 
   const copy = () => {
     navigator.clipboard?.writeText(ca);
@@ -254,62 +455,65 @@ function Index() {
         </div>
       )}
 
-
       <nav className="legal-nav">
         <div className="nav-brand">
           <div className="seal-mini">$L</div>
           LEGAL
         </div>
         <div className="nav-links">
-          <a href="#historia">A história</a>
-          <a href="#howto">Como comprar</a>
-          <a href="#tokenomics">Tokenomics</a>
-          <a href="#community">Comunidade</a>
+          <a href="#historia">{t.navStory}</a>
+          <a href="#howto">{t.navHowto}</a>
+          <a href="#tokenomics">{t.navTokenomics}</a>
+          <a href="#community">{t.navCommunity}</a>
         </div>
-        <a href="#howto" className="nav-cta">Comprar $LEGAL</a>
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <div className="lang-toggle">
+            <button className={lang === "pt" ? "active" : ""} onClick={() => setLang("pt")}>PT</button>
+            <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
+          </div>
+          <a href="#howto" className="nav-cta">{t.navCta}</a>
+        </div>
       </nav>
 
       <section className="hero">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="eyebrow">Solana · entrada 100% legal</span>
-            <h1>A porta certa <span>sempre abre.</span></h1>
-            <p className="lead">$LEGAL nasceu de uma ideia simples: o caminho certo deveria ser o caminho fácil. Sem atalho, sem burocracia escondida, sem letra miúda — só um carimbo de aprovado e seguir em frente.</p>
+            <span className="eyebrow">{t.heroEyebrow}</span>
+            <h1>{t.heroH1a}<span>{t.heroH1b}</span></h1>
+            <p className="lead">{t.heroLead}</p>
             <div className="hero-actions">
-              <a href="#howto" className="btn-primary" onClick={fireConfetti}>Comprar $LEGAL</a>
-              <a href="#historia" className="btn-secondary">Ler a história</a>
+              <a href="#howto" className="btn-primary" onClick={fireConfetti}>{t.heroBtnPrimary}</a>
+              <a href="#historia" className="btn-secondary">{t.heroBtnSecondary}</a>
             </div>
           </div>
           <div className="hero-art">
-            <div className="floating-stamp s1">Aprovado</div>
+            <div className="floating-stamp s1">{t.case1Stamp}</div>
             <div className="floating-stamp s2">100% legal</div>
-            <img src={memeQueue} alt="Doge officer aprovando passaportes $LEGAL" />
+            <img src={memeQueue} alt="Doge officer approving $LEGAL passports" width={1024} height={1024} />
           </div>
         </div>
       </section>
 
       <section className="ticker-strip">
         <div className="track">
-          <span>★ ENTRADA APROVADA</span><span>· $LEGAL ·</span><span>★ NA FILA CERTA</span><span>· SOLANA ·</span><span>★ CARIMBADO E LIBERADO</span><span>· LP QUEIMADA ·</span>
-          <span>★ ENTRADA APROVADA</span><span>· $LEGAL ·</span><span>★ NA FILA CERTA</span><span>· SOLANA ·</span><span>★ CARIMBADO E LIBERADO</span><span>· LP QUEIMADA ·</span>
+          <span>{t.ticker1}</span><span>{t.ticker2}</span><span>{t.ticker3}</span><span>{t.ticker4}</span><span>{t.ticker5}</span><span>{t.ticker6}</span>
+          <span>{t.ticker1}</span><span>{t.ticker2}</span><span>{t.ticker3}</span><span>{t.ticker4}</span><span>{t.ticker5}</span><span>{t.ticker6}</span>
         </div>
       </section>
 
       <section className="tweet-section">
         <div className="section-head reveal">
-          <span className="eyebrow">Documento fundador</span>
-          <h2>O tweet que inspirou tudo</h2>
+          <span className="eyebrow">{t.tweetEyebrow}</span>
+          <h2>{t.tweetH2}</h2>
         </div>
         <div className="tweet-grid">
           <div className="tweet-card reveal">
-            <img src={tweetAsset.url} alt="Tweet de Elon Musk sobre imigração legal" />
+            <img src={tweetAsset.url} alt="Elon Musk tweet about legal immigration" width={1024} height={1024} />
           </div>
           <div>
-            <p className="tweet-quote">
-              "Imigração legal pra gente honesta, trabalhadora e talentosa devia ser <em>fácil</em>. E imigração ilegal devia ser <em>difícil</em>."
-            </p>
+            <p className="tweet-quote" dangerouslySetInnerHTML={{ __html: t.tweetQuote }} />
             <p style={{marginTop:'20px', color:'rgba(245,241,232,0.6)', fontSize:'14px'}}>
-              Trocamos "imigração" por "memecoin" e o jogo virou. $LEGAL é o token de quem entra pela porta da frente.
+              {t.tweetP}
             </p>
           </div>
         </div>
@@ -317,103 +521,107 @@ function Index() {
 
       <section id="historia" className="story">
         <div className="section-head reveal">
-          <span className="eyebrow">Processo nº LE-2026-001</span>
-          <h2>O dossiê do $LEGAL</h2>
-          <p>Toda moeda tem uma origem. A nossa é um arquivo de três páginas — e a última ainda está sendo escrita por quem entrar agora.</p>
+          <span className="eyebrow">{t.storyEyebrow}</span>
+          <h2>{t.storyH2}</h2>
+          <p>{t.storyP}</p>
         </div>
         <div className="dossier">
           <div className="case-file">
-            <div className="case-no">Página 1 — Análise inicial</div>
-            <div className="stamp">Aprovado</div>
-            <h3>O caminho difícil, feito do jeito certo</h3>
-            <p>$LEGAL representa quem faz tudo na ordem certa: pede, espera, prova, e só então atravessa a porta. Não é sobre ser rápido. É sobre ser correto — e ainda assim chegar lá.</p>
-            <img src={memeOfficer} alt="Pepe oficial carimbando LEGAL" className="case-img" loading="lazy" />
+            <div className="case-no">{t.case1No}</div>
+            <div className="stamp">{t.case1Stamp}</div>
+            <h3>{t.case1H3}</h3>
+            <p>{t.case1P}</p>
+            <img src={memeOfficer} alt={t.case1Alt} className="case-img" loading="lazy" width={1024} height={1024} />
           </div>
           <div className="case-file denied">
-            <div className="case-no">Página 2 — O que rejeitamos</div>
-            <div className="stamp denied">Negado</div>
-            <h3>Atalhos, promessas vazias e letra miúda</h3>
-            <p>Todo projeto que promete demais e explica de menos recebe o mesmo selo aqui: negado. $LEGAL não vende milagre — vende um processo transparente, do contrato à liquidez.</p>
-            <img src={memeDossier} alt="Dossiê com carimbos approved e denied" className="case-img" loading="lazy" />
+            <div className="case-no">{t.case2No}</div>
+            <div className="stamp denied">{t.case2Stamp}</div>
+            <h3>{t.case2H3}</h3>
+            <p>{t.case2P}</p>
+            <img src={memeDossier} alt={t.case2Alt} className="case-img" loading="lazy" width={1024} height={1024} />
           </div>
           <div className="case-file pending">
-            <div className="case-no">Página 3 — Status atual</div>
-            <div className="stamp pending">Em andamento</div>
-            <h3>A fila continua — e você pode entrar nela</h3>
-            <p>O dossiê do $LEGAL está aberto. Cada novo holder é mais uma entrada aprovada nesse arquivo. A história está sendo escrita agora, com quem decide entrar pela porta certa.</p>
-            <img src={memeGateway} alt="Doge, Pepe e astronauta atravessando o portão LEGAL ENTRY" className="case-img" loading="lazy" />
+            <div className="case-no">{t.case3No}</div>
+            <div className="stamp pending">{t.case3Stamp}</div>
+            <h3>{t.case3H3}</h3>
+            <p>{t.case3P}</p>
+            <img src={memeGateway} alt={t.case3Alt} className="case-img" loading="lazy" width={1024} height={1024} />
           </div>
         </div>
       </section>
 
       <section className="gallery">
         <div className="section-head reveal">
-          <span className="eyebrow">Arquivo visual</span>
-          <h2>Memes oficiais do processo</h2>
-          <p>Cada imagem é um carimbo. Cada carimbo é uma piada interna que virou cultura.</p>
+          <span className="eyebrow">{t.supportersEyebrow}</span>
+          <h2>{t.supportersH2}</h2>
+          <p>{t.supportersP}</p>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-item reveal"><img src={memeQueue} alt="Fila de approval" loading="lazy" /><span className="tag">Fila oficial</span></div>
-          <div className="gallery-item reveal"><img src={memeStamp} alt="Carimbo APPROVED" loading="lazy" /><span className="tag">Carimbo final</span></div>
-          <div className="gallery-item reveal"><img src={memeOfficer} alt="Oficial Pepe" loading="lazy" /><span className="tag">O oficial</span></div>
-          <div className="gallery-item reveal"><img src={memeGateway} alt="Portão Legal Entry" loading="lazy" /><span className="tag">A travessia</span></div>
-          <div className="gallery-item reveal"><img src={memeDossier} alt="Dossiê aberto" loading="lazy" /><span className="tag">O dossiê</span></div>
-          <div className="gallery-item reveal"><img src={tweetAsset.url} alt="Tweet fundador" loading="lazy" /><span className="tag">Documento fundador</span></div>
+          <div className="gallery-item reveal"><img src={memeShibaOfficer} alt={t.galleryTag7} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag7}</span></div>
+          <div className="gallery-item reveal"><img src={memeDogePassport} alt={t.galleryTag8} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag8}</span></div>
+          <div className="gallery-item reveal"><img src={memeDogeRally} alt={t.galleryTag9} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag9}</span></div>
+          <div className="gallery-item reveal"><img src={memeElonLegal} alt={t.galleryTag10} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag10}</span></div>
+          <div className="gallery-item reveal"><img src={memeQueue} alt={t.galleryTag1} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag1}</span></div>
+          <div className="gallery-item reveal"><img src={memeStamp} alt={t.galleryTag2} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag2}</span></div>
+          <div className="gallery-item reveal"><img src={memeOfficer} alt={t.galleryTag3} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag3}</span></div>
+          <div className="gallery-item reveal"><img src={memeGateway} alt={t.galleryTag4} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag4}</span></div>
+          <div className="gallery-item reveal"><img src={memeDossier} alt={t.galleryTag5} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag5}</span></div>
+          <div className="gallery-item reveal"><img src={tweetAsset.url} alt={t.galleryTag6} loading="lazy" width={1024} height={1024} /><span className="tag">{t.galleryTag6}</span></div>
         </div>
       </section>
 
       <section id="howto" className="howto">
         <div className="section-head reveal">
-          <span className="eyebrow">Formulário de entrada</span>
-          <h2>Como comprar $LEGAL</h2>
-          <p>Quatro carimbos até a aprovação final. Nenhum deles exige fila de verdade.</p>
+          <span className="eyebrow">{t.howtoEyebrow}</span>
+          <h2>{t.howtoH2}</h2>
+          <p>{t.howtoP}</p>
         </div>
         <div className="steps">
           <div className="step reveal">
-            <span className="stage">Carimbo 01</span>
-            <h4>Baixe uma carteira</h4>
-            <p>Instale a Phantom (ou a carteira Solana de sua preferência) no celular ou como extensão do navegador.</p>
-            <a className="link" href="https://phantom.app" target="_blank" rel="noreferrer">Baixar Phantom →</a>
+            <span className="stage">{t.step1Stage}</span>
+            <h4>{t.step1H4}</h4>
+            <p>{t.step1P}</p>
+            <a className="link" href="https://phantom.app" target="_blank" rel="noreferrer">{t.step1Link}</a>
           </div>
           <div className="step reveal">
-            <span className="stage">Carimbo 02</span>
-            <h4>Consiga SOL</h4>
-            <p>Compre SOL direto na carteira, transfira de outra carteira, ou compre numa exchange e envie para a sua.</p>
+            <span className="stage">{t.step2Stage}</span>
+            <h4>{t.step2H4}</h4>
+            <p>{t.step2P}</p>
           </div>
           <div className="step reveal">
-            <span className="stage">Carimbo 03</span>
-            <h4>Acesse a Raydium</h4>
-            <p>Vá até raydium.io (ou Jup.ag) para trocar seu SOL por $LEGAL com a liquidez disponível.</p>
-            <a className="link" href="https://raydium.io" target="_blank" rel="noreferrer">Abrir Raydium →</a>
+            <span className="stage">{t.step3Stage}</span>
+            <h4>{t.step3H4}</h4>
+            <p>{t.step3P}</p>
+            <a className="link" href="https://raydium.io" target="_blank" rel="noreferrer">{t.step3Link}</a>
           </div>
           <div className="step reveal">
-            <span className="stage">Carimbo 04</span>
-            <h4>Cole o contrato e troque</h4>
-            <p>Cole o endereço do contrato (CA) abaixo, confirme a troca e pronto: entrada aprovada.</p>
-            <a className="link" href="#tokenomics">Ver o contrato ↓</a>
+            <span className="stage">{t.step4Stage}</span>
+            <h4>{t.step4H4}</h4>
+            <p>{t.step4P}</p>
+            <a className="link" href="#tokenomics">{t.step4Link}</a>
           </div>
         </div>
       </section>
 
       <section id="tokenomics" className="tokenomics">
         <div className="section-head reveal">
-          <span className="eyebrow">Certificado oficial</span>
-          <h2>Tokenomics</h2>
-          <p>Sem alocação escondida para a equipe, sem imposto de compra ou venda.</p>
+          <span className="eyebrow">{t.tokenomicsEyebrow}</span>
+          <h2>{t.tokenomicsH2}</h2>
+          <p>{t.tokenomicsP}</p>
         </div>
         <div className="ledger reveal">
           <div className="ledger-top">
-            <span>certificado nº LE-0001</span>
-            <span>rede: solana</span>
+            <span>{t.ledgerCert}</span>
+            <span>{t.ledgerNet}</span>
           </div>
-          <div className="ledger-row"><span className="label">Supply total</span><span className="value">1.000.000.000 $LEGAL</span></div>
-          <div className="ledger-row"><span className="label">Taxa de compra/venda</span><span className="value">0%</span></div>
-          <div className="ledger-row"><span className="label">Liquidez</span><span className="value">Queimada (LP burnt)</span></div>
+          <div className="ledger-row"><span className="label">{t.labelSupply}</span><span className="value">{t.valueSupply}</span></div>
+          <div className="ledger-row"><span className="label">{t.labelTax}</span><span className="value">{t.valueTax}</span></div>
+          <div className="ledger-row"><span className="label">{t.labelLp}</span><span className="value">{t.valueLp}</span></div>
           <div className="ledger-row ca-row">
-            <span className="label">Endereço do contrato (CA)</span>
+            <span className="label">{t.labelCa}</span>
             <div className="ca-box">
               <code>{ca}</code>
-              <button className="copy-btn" onClick={copy}>{copied ? "Copiado ✓" : "Copiar"}</button>
+              <button className="copy-btn" onClick={copy}>{copied ? t.copiedBtn : t.copyBtn}</button>
             </div>
           </div>
         </div>
@@ -421,9 +629,9 @@ function Index() {
 
       <section id="community" className="community">
         <div className="section-head reveal">
-          <span className="eyebrow">Junte-se ao processo</span>
-          <h2>A fila está aberta</h2>
-          <p>Acompanhe o caso, converse com outros holders e fique de olho na liquidez em tempo real.</p>
+          <span className="eyebrow">{t.communityEyebrow}</span>
+          <h2>{t.communityH2}</h2>
+          <p>{t.communityP}</p>
         </div>
         <div className="social-row">
           <a className="social-pill" href="#" target="_blank" rel="noreferrer">X (Twitter)</a>
@@ -435,8 +643,8 @@ function Index() {
 
       <footer className="legal-footer">
         <div className="seal-mini">$L</div>
-        <p>$LEGAL é um memecoin sem valor intrínseco garantido. Nada aqui é aconselhamento financeiro.<br/>Pesquise antes de investir e só aplique o que estiver disposto a perder.</p>
-        <p className="legal-fine">© 2026 $LEGAL. Todos os direitos reservados. Este site é uma peça de identidade de comunidade e não constitui oferta de valores mobiliários em nenhuma jurisdição.</p>
+        <p dangerouslySetInnerHTML={{ __html: t.footerDisclaimer }} />
+        <p className="legal-fine">{t.footerFine}</p>
       </footer>
     </div>
   );
