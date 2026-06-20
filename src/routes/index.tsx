@@ -139,6 +139,45 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .legal-footer .seal-mini{width:40px;height:40px; margin:0 auto 16px; font-size:13px;}
 .legal-footer p{font-size:13px; color:rgba(245,241,232,0.45); line-height:1.7;}
 .legal-footer .legal-fine{margin-top:18px; font-size:11px; color:rgba(245,241,232,0.3); max-width:560px; margin-left:auto; margin-right:auto;}
+
+/* Scroll reveal */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease-out, transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1; transform:translateY(0);}
+.case-file .stamp{opacity:0; transform:rotate(-8deg) scale(0.4);}
+.case-file.in .stamp{animation:stampPop .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.25s;}
+@keyframes stampPop{
+  0%{opacity:0; transform:rotate(20deg) scale(2.2);}
+  60%{opacity:1; transform:rotate(-12deg) scale(0.92);}
+  100%{opacity:1; transform:rotate(-8deg) scale(1);}
+}
+.floating-stamp{opacity:0;}
+.hero-art.in .floating-stamp.s1{animation:stampPop .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.4s;}
+.hero-art.in .floating-stamp.s2{animation:stampPop2 .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.7s;}
+@keyframes stampPop2{
+  0%{opacity:0; transform:rotate(-20deg) scale(2.2);}
+  60%{opacity:1; transform:rotate(14deg) scale(0.92);}
+  100%{opacity:1; transform:rotate(10deg) scale(1);}
+}
+
+/* Confetti */
+.confetti-layer{position:fixed; inset:0; pointer-events:none; z-index:60; overflow:hidden;}
+.confetti-piece{position:absolute; top:-20px; width:10px; height:14px; opacity:.95;
+  animation:confettiFall linear forwards;}
+@keyframes confettiFall{
+  0%{transform:translateY(-40px) rotate(0deg); opacity:0;}
+  8%{opacity:1;}
+  100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+  .case-file .stamp, .floating-stamp{opacity:1 !important; transform:rotate(-8deg) scale(1) !important; animation:none !important;}
+  .floating-stamp.s2{transform:rotate(10deg) scale(1) !important;}
+  .hero-art img{animation:none !important;}
+  .ticker-strip .track{animation:none !important;}
+  .confetti-layer{display:none !important;}
+}
+
 `;
 
 function Index() {
