@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import tweetAsset from "@/assets/tweet-musk.png.asset.json";
 import memeQueue from "@/assets/meme-queue.jpg";
 import memeStamp from "@/assets/meme-stamp.jpg";
