@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "$legal" },
+      { name: "description", content: "Legal immigration for honest, hardworking, talented people should be easy and coming into the country illegally should be hard." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "$legal" },
+      { property: "og:description", content: "Legal immigration for honest, hardworking, talented people should be easy and coming into the country illegally should be hard." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "$legal" },
+      { name: "twitter:description", content: "Legal immigration for honest, hardworking, talented people should be easy and coming into the country illegally should be hard." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d361c842-0dcc-498d-97f4-d5b370632751/id-preview-fda81f6d--0d6b9638-f998-4c7e-8e4a-a8741d75c9c7.lovable.app-1781998698000.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d361c842-0dcc-498d-97f4-d5b370632751/id-preview-fda81f6d--0d6b9638-f998-4c7e-8e4a-a8741d75c9c7.lovable.app-1781998698000.png" },
     ],
     links: [
       {
