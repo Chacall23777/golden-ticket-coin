@@ -276,7 +276,7 @@ function Index() {
             <h1>A porta certa <span>sempre abre.</span></h1>
             <p className="lead">$LEGAL nasceu de uma ideia simples: o caminho certo deveria ser o caminho fácil. Sem atalho, sem burocracia escondida, sem letra miúda — só um carimbo de aprovado e seguir em frente.</p>
             <div className="hero-actions">
-              <a href="#howto" className="btn-primary">Comprar $LEGAL</a>
+              <a href="#howto" className="btn-primary" onClick={fireConfetti}>Comprar $LEGAL</a>
               <a href="#historia" className="btn-secondary">Ler a história</a>
             </div>
           </div>
