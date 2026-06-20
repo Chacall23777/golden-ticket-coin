@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import tweetAsset from "@/assets/tweet-musk.png.asset.json";
 import memeQueue from "@/assets/meme-queue.jpg";
 import memeStamp from "@/assets/meme-stamp.jpg";
@@ -138,22 +139,121 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .legal-footer .seal-mini{width:40px;height:40px; margin:0 auto 16px; font-size:13px;}
 .legal-footer p{font-size:13px; color:rgba(245,241,232,0.45); line-height:1.7;}
 .legal-footer .legal-fine{margin-top:18px; font-size:11px; color:rgba(245,241,232,0.3); max-width:560px; margin-left:auto; margin-right:auto;}
+
+/* Scroll reveal */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease-out, transform .7s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1; transform:translateY(0);}
+.case-file .stamp{opacity:0; transform:rotate(-8deg) scale(0.4);}
+.case-file.in .stamp{animation:stampPop .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.25s;}
+@keyframes stampPop{
+  0%{opacity:0; transform:rotate(20deg) scale(2.2);}
+  60%{opacity:1; transform:rotate(-12deg) scale(0.92);}
+  100%{opacity:1; transform:rotate(-8deg) scale(1);}
+}
+.floating-stamp{opacity:0;}
+.hero-art.in .floating-stamp.s1{animation:stampPop .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.4s;}
+.hero-art.in .floating-stamp.s2{animation:stampPop2 .55s cubic-bezier(.2,1.4,.4,1) forwards; animation-delay:.7s;}
+@keyframes stampPop2{
+  0%{opacity:0; transform:rotate(-20deg) scale(2.2);}
+  60%{opacity:1; transform:rotate(14deg) scale(0.92);}
+  100%{opacity:1; transform:rotate(10deg) scale(1);}
+}
+
+/* Confetti */
+.confetti-layer{position:fixed; inset:0; pointer-events:none; z-index:60; overflow:hidden;}
+.confetti-piece{position:absolute; top:-20px; width:10px; height:14px; opacity:.95;
+  animation:confettiFall linear forwards;}
+@keyframes confettiFall{
+  0%{transform:translateY(-40px) rotate(0deg); opacity:0;}
+  8%{opacity:1;}
+  100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
+  .case-file .stamp, .floating-stamp{opacity:1 !important; transform:rotate(-8deg) scale(1) !important; animation:none !important;}
+  .floating-stamp.s2{transform:rotate(10deg) scale(1) !important;}
+  .hero-art img{animation:none !important;}
+  .ticker-strip .track{animation:none !important;}
+  .confetti-layer{display:none !important;}
+}
+
 `;
 
 function Index() {
   const [copied, setCopied] = useState(false);
+  const [confetti, setConfetti] = useState<Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>>([]);
+  const rootRef = useRef<HTMLDivElement>(null);
   const ca = "COLE_O_ENDERECO_DO_CONTRATO_AQUI";
 
   const copy = () => {
     navigator.clipboard?.writeText(ca);
     setCopied(true);
     setTimeout(() => setCopied(false), 1800);
+    fireConfetti();
   };
 
+  const fireConfetti = () => {
+    if (typeof window === "undefined") return;
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const colors = ["#F4C94A", "#1A7A4C", "#C9252B", "#F2A341", "#F5F1E8"];
+    const pieces = Array.from({ length: 70 }, (_, i) => ({
+      id: Date.now() + i,
+      left: Math.random() * 100,
+      bg: colors[i % colors.length],
+      delay: Math.random() * 0.4,
+      dur: 2.4 + Math.random() * 1.8,
+      rot: Math.random() * 360,
+    }));
+    setConfetti(pieces);
+    setTimeout(() => setConfetti([]), 5000);
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    const targets = rootRef.current?.querySelectorAll<HTMLElement>(".reveal, .case-file, .hero-art") ?? [];
+    if (reduce) {
+      targets.forEach((el) => el.classList.add("in"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+    targets.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <div className="legal-root">
+    <div className="legal-root" ref={rootRef}>
       <style>{css}</style>
       <div className="bg-lines" />
+      {confetti.length > 0 && (
+        <div className="confetti-layer" aria-hidden="true">
+          {confetti.map((c) => (
+            <span
+              key={c.id}
+              className="confetti-piece"
+              style={{
+                left: `${c.left}%`,
+                background: c.bg,
+                transform: `rotate(${c.rot}deg)`,
+                animationDelay: `${c.delay}s`,
+                animationDuration: `${c.dur}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
 
       <nav className="legal-nav">
         <div className="nav-brand">
@@ -176,7 +276,7 @@ function Index() {
             <h1>A porta certa <span>sempre abre.</span></h1>
             <p className="lead">$LEGAL nasceu de uma ideia simples: o caminho certo deveria ser o caminho fácil. Sem atalho, sem burocracia escondida, sem letra miúda — só um carimbo de aprovado e seguir em frente.</p>
             <div className="hero-actions">
-              <a href="#howto" className="btn-primary">Comprar $LEGAL</a>
+              <a href="#howto" className="btn-primary" onClick={fireConfetti}>Comprar $LEGAL</a>
               <a href="#historia" className="btn-secondary">Ler a história</a>
             </div>
           </div>
@@ -196,12 +296,12 @@ function Index() {
       </section>
 
       <section className="tweet-section">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Documento fundador</span>
           <h2>O tweet que inspirou tudo</h2>
         </div>
         <div className="tweet-grid">
-          <div className="tweet-card">
+          <div className="tweet-card reveal">
             <img src={tweetAsset.url} alt="Tweet de Elon Musk sobre imigração legal" />
           </div>
           <div>
@@ -216,7 +316,7 @@ function Index() {
       </section>
 
       <section id="historia" className="story">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Processo nº LE-2026-001</span>
           <h2>O dossiê do $LEGAL</h2>
           <p>Toda moeda tem uma origem. A nossa é um arquivo de três páginas — e a última ainda está sendo escrita por quem entrar agora.</p>
@@ -247,46 +347,46 @@ function Index() {
       </section>
 
       <section className="gallery">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Arquivo visual</span>
           <h2>Memes oficiais do processo</h2>
           <p>Cada imagem é um carimbo. Cada carimbo é uma piada interna que virou cultura.</p>
         </div>
         <div className="gallery-grid">
-          <div className="gallery-item"><img src={memeQueue} alt="Fila de approval" loading="lazy" /><span className="tag">Fila oficial</span></div>
-          <div className="gallery-item"><img src={memeStamp} alt="Carimbo APPROVED" loading="lazy" /><span className="tag">Carimbo final</span></div>
-          <div className="gallery-item"><img src={memeOfficer} alt="Oficial Pepe" loading="lazy" /><span className="tag">O oficial</span></div>
-          <div className="gallery-item"><img src={memeGateway} alt="Portão Legal Entry" loading="lazy" /><span className="tag">A travessia</span></div>
-          <div className="gallery-item"><img src={memeDossier} alt="Dossiê aberto" loading="lazy" /><span className="tag">O dossiê</span></div>
-          <div className="gallery-item"><img src={tweetAsset.url} alt="Tweet fundador" loading="lazy" /><span className="tag">Documento fundador</span></div>
+          <div className="gallery-item reveal"><img src={memeQueue} alt="Fila de approval" loading="lazy" /><span className="tag">Fila oficial</span></div>
+          <div className="gallery-item reveal"><img src={memeStamp} alt="Carimbo APPROVED" loading="lazy" /><span className="tag">Carimbo final</span></div>
+          <div className="gallery-item reveal"><img src={memeOfficer} alt="Oficial Pepe" loading="lazy" /><span className="tag">O oficial</span></div>
+          <div className="gallery-item reveal"><img src={memeGateway} alt="Portão Legal Entry" loading="lazy" /><span className="tag">A travessia</span></div>
+          <div className="gallery-item reveal"><img src={memeDossier} alt="Dossiê aberto" loading="lazy" /><span className="tag">O dossiê</span></div>
+          <div className="gallery-item reveal"><img src={tweetAsset.url} alt="Tweet fundador" loading="lazy" /><span className="tag">Documento fundador</span></div>
         </div>
       </section>
 
       <section id="howto" className="howto">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Formulário de entrada</span>
           <h2>Como comprar $LEGAL</h2>
           <p>Quatro carimbos até a aprovação final. Nenhum deles exige fila de verdade.</p>
         </div>
         <div className="steps">
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 01</span>
             <h4>Baixe uma carteira</h4>
             <p>Instale a Phantom (ou a carteira Solana de sua preferência) no celular ou como extensão do navegador.</p>
             <a className="link" href="https://phantom.app" target="_blank" rel="noreferrer">Baixar Phantom →</a>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 02</span>
             <h4>Consiga SOL</h4>
             <p>Compre SOL direto na carteira, transfira de outra carteira, ou compre numa exchange e envie para a sua.</p>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 03</span>
             <h4>Acesse a Raydium</h4>
             <p>Vá até raydium.io (ou Jup.ag) para trocar seu SOL por $LEGAL com a liquidez disponível.</p>
             <a className="link" href="https://raydium.io" target="_blank" rel="noreferrer">Abrir Raydium →</a>
           </div>
-          <div className="step">
+          <div className="step reveal">
             <span className="stage">Carimbo 04</span>
             <h4>Cole o contrato e troque</h4>
             <p>Cole o endereço do contrato (CA) abaixo, confirme a troca e pronto: entrada aprovada.</p>
@@ -296,12 +396,12 @@ function Index() {
       </section>
 
       <section id="tokenomics" className="tokenomics">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Certificado oficial</span>
           <h2>Tokenomics</h2>
           <p>Sem alocação escondida para a equipe, sem imposto de compra ou venda.</p>
         </div>
-        <div className="ledger">
+        <div className="ledger reveal">
           <div className="ledger-top">
             <span>certificado nº LE-0001</span>
             <span>rede: solana</span>
@@ -320,7 +420,7 @@ function Index() {
       </section>
 
       <section id="community" className="community">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="eyebrow">Junte-se ao processo</span>
           <h2>A fila está aberta</h2>
           <p>Acompanhe o caso, converse com outros holders e fique de olho na liquidez em tempo real.</p>
