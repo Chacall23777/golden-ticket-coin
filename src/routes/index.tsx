@@ -282,6 +282,11 @@ const tx: Record<Lang, Record<string, string>> = {
     supportersEyebrow: "Aliados da causa",
     supportersH2: "Quem apoia a entrada legal",
     supportersP: "Desde o Doge até o Shiba, passando pelo próprio tweet que originou tudo — a comunidade que acredita em fazer as coisas do jeito certo.",
+    pumpfunEyebrow: "Pump.fun",
+    pumpfunH2: "Desafios e Recompensas",
+    pumpfunP: "Entre na comunidade oficial da $LEGAL no Pump.fun. Participe de desafios semanais, conquiste recompensas em tokens e suba no ranking dos mais engajados.",
+    pumpfunBtn: "Entrar na comunidade Pump.fun →",
+    pumpfunNote: "Novos desafios toda semana. Recompensas pagas em $LEGAL.",
   },
   en: {
     navStory: "The Story",
