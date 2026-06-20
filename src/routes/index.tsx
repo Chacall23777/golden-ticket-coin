@@ -176,6 +176,14 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
   100%{transform:translateY(110vh) rotate(720deg); opacity:0;}
 }
 
+.pumpfun{background:var(--navy);}
+.pumpfun-card{max-width:800px; margin:0 auto; background: linear-gradient(135deg, rgba(244,201,74,0.08) 0%, rgba(11,31,58,0.6) 100%); border:1px solid rgba(244,201,74,0.25); border-radius:8px; padding:48px 40px; text-align:center; display:flex; flex-direction:column; gap:18px; align-items:center;}
+.pumpfun-card .pumpfun-seal{width:64px;height:64px;border-radius:50%;border:3px solid var(--gold); display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gold);font-family:var(--mono); margin:0 auto;}
+.pumpfun-card h3{font-family:var(--serif); font-size:clamp(24px,3.5vw,34px); color:var(--paper);}
+.pumpfun-card p{color:rgba(245,241,232,0.75); font-size:16px; line-height:1.65; max-width:560px;}
+.pumpfun-card .btn-primary{font-size:15px; padding:18px 36px; margin-top:8px;}
+.pumpfun-note{font-family:var(--mono); font-size:12px; color:var(--gold-deep); letter-spacing:1.5px; margin-top:8px;}
+
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
   .case-file .stamp, .floating-stamp{opacity:1 !important; transform:rotate(-8deg) scale(1) !important; animation:none !important;}
@@ -282,6 +290,11 @@ const tx: Record<Lang, Record<string, string>> = {
     supportersEyebrow: "Aliados da causa",
     supportersH2: "Quem apoia a entrada legal",
     supportersP: "Desde o Doge até o Shiba, passando pelo próprio tweet que originou tudo — a comunidade que acredita em fazer as coisas do jeito certo.",
+    pumpfunEyebrow: "Pump.fun",
+    pumpfunH2: "Desafios e Recompensas",
+    pumpfunP: "Entre na comunidade oficial da $LEGAL no Pump.fun. Participe de desafios semanais, conquiste recompensas em tokens e suba no ranking dos mais engajados.",
+    pumpfunBtn: "Entrar na comunidade Pump.fun →",
+    pumpfunNote: "Novos desafios toda semana. Recompensas pagas em $LEGAL.",
   },
   en: {
     navStory: "The Story",
@@ -376,6 +389,11 @@ const tx: Record<Lang, Record<string, string>> = {
     supportersEyebrow: "Allies of the cause",
     supportersH2: "Who supports legal entry",
     supportersP: "From Doge to Shiba, through the very tweet that started it all — the community that believes in doing things the right way.",
+    pumpfunEyebrow: "Pump.fun",
+    pumpfunH2: "Challenges & Rewards",
+    pumpfunP: "Join the official $LEGAL community on Pump.fun. Take part in weekly challenges, earn token rewards and climb the engagement leaderboard.",
+    pumpfunBtn: "Join Pump.fun Community →",
+    pumpfunNote: "New challenges every week. Rewards paid in $LEGAL.",
   },
 };
 
@@ -624,6 +642,20 @@ function Index() {
               <button className="copy-btn" onClick={copy}>{copied ? t.copiedBtn : t.copyBtn}</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="pumpfun" className="pumpfun">
+        <div className="section-head reveal">
+          <span className="eyebrow">{t.pumpfunEyebrow}</span>
+          <h2>{t.pumpfunH2}</h2>
+        </div>
+        <div className="pumpfun-card reveal">
+          <div className="pumpfun-seal">$L</div>
+          <h3>{t.pumpfunH2}</h3>
+          <p>{t.pumpfunP}</p>
+          <a className="btn-primary" href="#" target="_blank" rel="noreferrer" onClick={fireConfetti}>{t.pumpfunBtn}</a>
+          <span className="pumpfun-note">{t.pumpfunNote}</span>
         </div>
       </section>
 
