@@ -521,6 +521,7 @@ function Index() {
           <a href="#historia">{t.navStory}</a>
           <a href="#howto">{t.navHowto}</a>
           <a href="#tokenomics">{t.navTokenomics}</a>
+          <a href="#buy">Pix/Card</a>
           <a href="#community">{t.navCommunity}</a>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
