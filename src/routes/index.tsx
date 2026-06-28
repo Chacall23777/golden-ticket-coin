@@ -698,6 +698,28 @@ function Index() {
         </div>
       </section>
 
+      <section id="buy" className="buy-fiat">
+        <div className="buy-grid">
+          <div className="buy-art reveal">
+            <img src={multitokenBuy} alt="Multitoken — Solana Token Swap Platform" />
+          </div>
+          <div className="buy-copy reveal">
+            <span className="eyebrow-neon">{t.buyEyebrow}</span>
+            <h2>{t.buyH2a} <span>{t.buyH2b}</span></h2>
+            <p>{t.buyP}</p>
+            <div className="buy-methods">
+              <span className="buy-chip"><b>◉</b> {t.buyChipPix}</span>
+              <span className="buy-chip"><b>▣</b> {t.buyChipCard}</span>
+              <span className="buy-chip"><b>◆</b> {t.buyChipSol}</span>
+            </div>
+            <a className="btn-buy" href="https://multitoken.com.br" target="_blank" rel="noreferrer" onClick={fireConfetti}>{t.buyBtn}</a>
+            <span className="buy-fine">{t.buyFine}</span>
+          </div>
+        </div>
+      </section>
+
+
+
       <section id="community" className="community">
         <div className="section-head reveal">
           <span className="eyebrow">{t.communityEyebrow}</span>
