@@ -11,6 +11,7 @@ import memeShibaOfficer from "@/assets/meme-shiba-officer.jpg";
 import memeDogePassport from "@/assets/meme-doge-passport.jpg";
 import memeDogeRally from "@/assets/meme-doge-rally.jpg";
 import memeElonLegal from "@/assets/meme-elon-legal.jpg";
+import multitokenBuy from "@/assets/multitoken-buy.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -183,6 +184,26 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .pumpfun-card p{color:rgba(245,241,232,0.75); font-size:16px; line-height:1.65; max-width:560px;}
 .pumpfun-card .btn-primary{font-size:15px; padding:18px 36px; margin-top:8px;}
 .pumpfun-note{font-family:var(--mono); font-size:12px; color:var(--gold-deep); letter-spacing:1.5px; margin-top:8px;}
+
+.buy-fiat{background:linear-gradient(160deg,#06091a 0%, #0B1F3A 55%, #1a0b3a 100%); position:relative;}
+.buy-fiat::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 20% 30%, rgba(0,229,255,0.18), transparent 50%), radial-gradient(circle at 80% 70%, rgba(180,80,255,0.18), transparent 55%); pointer-events:none;}
+.buy-grid{display:grid; grid-template-columns:1.05fr 1fr; gap:56px; max-width:1180px; margin:0 auto; align-items:center; position:relative; z-index:1;}
+@media(max-width:880px){.buy-grid{grid-template-columns:1fr; gap:36px;}}
+.buy-art{position:relative; display:flex; justify-content:center;}
+.buy-art img{width:100%; max-width:520px; border-radius:18px; box-shadow:0 20px 60px rgba(0,229,255,0.35), 0 0 0 1px rgba(0,229,255,0.25), 0 30px 80px rgba(180,80,255,0.25); animation:buyFloat 6s ease-in-out infinite;}
+.buy-art::after{content:""; position:absolute; inset:-20px; border-radius:24px; background:conic-gradient(from 0deg, rgba(0,229,255,0.4), rgba(180,80,255,0.4), rgba(0,229,255,0.4)); filter:blur(40px); opacity:0.55; z-index:-1; animation:buySpin 10s linear infinite;}
+@keyframes buyFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+@keyframes buySpin{to{transform:rotate(360deg);}}
+.buy-copy .eyebrow-neon{display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:3px; color:#00E5FF; padding:6px 14px; border:1px solid rgba(0,229,255,0.5); border-radius:999px; text-transform:uppercase; margin-bottom:18px; background:rgba(0,229,255,0.08);}
+.buy-copy h2{font-family:var(--serif); font-size:clamp(30px,4.5vw,46px); line-height:1.1; color:#fff; margin:0 0 18px;}
+.buy-copy h2 span{background:linear-gradient(90deg,#00E5FF,#B450FF); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.buy-copy p{color:rgba(245,241,232,0.8); font-size:16px; line-height:1.7; margin:0 0 22px; max-width:520px;}
+.buy-methods{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px;}
+.buy-chip{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); font-size:13px; letter-spacing:1px; color:#fff; font-family:var(--mono);}
+.buy-chip b{color:#00E5FF;}
+.btn-buy{display:inline-flex; align-items:center; gap:10px; padding:18px 32px; border-radius:10px; background:linear-gradient(90deg,#00E5FF,#B450FF); color:#06091a; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; font-size:14px; box-shadow:0 10px 30px rgba(0,229,255,0.4); transition:transform .2s, box-shadow .2s;}
+.btn-buy:hover{transform:translateY(-2px); box-shadow:0 14px 40px rgba(180,80,255,0.55);}
+.buy-fine{display:block; margin-top:14px; font-family:var(--mono); font-size:11px; color:rgba(245,241,232,0.5); letter-spacing:1.5px;}
 
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1 !important; transform:none !important; transition:none !important;}
