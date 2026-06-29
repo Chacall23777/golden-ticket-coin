@@ -12,6 +12,7 @@ import memeDogePassport from "@/assets/meme-doge-passport.jpg";
 import memeDogeRally from "@/assets/meme-doge-rally.jpg";
 import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 import multitokenBuy from "@/assets/multitoken-buy.jpg";
+import { HoldersSection } from "@/components/HoldersSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
