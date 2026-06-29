@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 // ⚠️ CONFIGURAR ANTES DE PUBLICAR:
 const LEGAL_MINT = "COLE_O_CA_DO_TOKEN_LEGAL_AQUI";
