@@ -27,7 +27,7 @@ const RESPOSTAS: Record<Intent, string> = {
   links: `🔗 **Links oficiais**\n\n- [Website](https://elonlegal.sale)\n- [X @legal_elon](https://x.com/legal_elon)\n- [Telegram](https://t.me/+j9lyzSZ4p0FjNjMx)\n- [CMC Community](https://coinmarketcap.com/community/profile/legal_)\n- DexScreener: em breve\n- Solscan: em breve\n\n\`[VERIFICADO ✓]\``,
   lp: `🔥 **Segurança**\n\n- **LP Queimada:** liquidez permanentemente bloqueada — ninguém pode remover.\n- **Contrato Renunciado:** zero mudanças maliciosas possíveis.\n\n\`[SAFU ✓]\``,
   about: `🏛️ **Origem**\n\nInspirado no tweet do Elon: *"o caminho certo deveria ser o fácil."* Trocamos "imigração" por "memecoin" — **$LEGAL** é o token de quem entra pela porta da frente. LP queimada, contrato renunciado, 0% para equipe.\n\n\`[APPROVED ✓]\``,
-  holders: `🏆 **Área dos Holders**\n\nHolders com **5M+ $LEGAL** acessam área exclusiva para postar no X direto pelo site.\n\nCarteiras: Phantom · Solflare · Jupiter | Taxa: **0%**\n\n\`[VIP ✓]\``,
+  holders: `🏆 **Área dos Holders**\n\nHolders com **5M+ $LEGAL** acessam área exclusiva para postar no X direto pelo site.\n\nCarteiras: Phantom · Solflare · Jupiter | Taxa: **1%**\n\n\`[VIP ✓]\``,
 };
 
 function detectIntent(text: string): Intent | null {
