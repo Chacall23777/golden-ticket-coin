@@ -75,6 +75,20 @@ export function DogeJudgeChat() {
     if (!text || loading) return;
     setError(null);
     const userMsg: Msg = { id: crypto.randomUUID(), role: "user", content: text };
+
+    // ── INSTANT LOCAL ANSWERS (no API call) ──
+    const intent = detectIntent(text);
+    if (intent && RESPOSTAS[intent]) {
+      const instant: Msg = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        content: RESPOSTAS[intent],
+      };
+      setMessages((prev) => [...prev, userMsg, instant]);
+      setInput("");
+      return;
+    }
+
     const assistantId = crypto.randomUUID();
     const baseHistory = [...messages.filter((m) => m.id !== "welcome"), userMsg];
     setMessages((prev) => [
