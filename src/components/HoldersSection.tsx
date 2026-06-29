@@ -23,7 +23,7 @@ interface WalletDef {
   name: string;
   install: string;
   color: string;
-  icon: JSX.Element;
+  icon: ReactNode;
   detect: () => any | null;
 }
 
