@@ -598,6 +598,9 @@ function Index() {
         </div>
       </section>
 
+      <HoldersSection />
+
+
       <section className="ticker-strip">
         <div className="track">
           <span>{t.ticker1}</span><span>{t.ticker2}</span><span>{t.ticker3}</span><span>{t.ticker4}</span><span>{t.ticker5}</span><span>{t.ticker6}</span>
