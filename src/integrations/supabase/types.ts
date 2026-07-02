@@ -14,7 +14,21 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      presale_settings: {
+        Row: {
+          id: number
+          start_time: string | null
+        }
+        Insert: {
+          id?: number
+          start_time?: string | null
+        }
+        Update: {
+          id?: number
+          start_time?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
