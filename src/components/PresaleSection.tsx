@@ -375,8 +375,17 @@ export default function PresaleSection() {
         )}
 
         {loaded && !started && (
-          <div className="ls-soon">Embarque em breve — data a confirmar</div>
+          <div className="ls-board" aria-label="Cronômetro aguardando início">
+            <FlipDigit value={CONFIG.durationDays} label="Dias" />
+            <span className="ls-colon">:</span>
+            <FlipDigit value={0} label="Horas" />
+            <span className="ls-colon">:</span>
+            <FlipDigit value={0} label="Min" />
+            <span className="ls-colon">:</span>
+            <FlipDigit value={0} label="Seg" />
+          </div>
         )}
+
 
         {started && ended && (
           <div className="ls-soon">Pré-venda encerrada</div>
