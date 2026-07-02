@@ -13,6 +13,7 @@ import memeDogeRally from "@/assets/meme-doge-rally.jpg";
 import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 import multitokenBuy from "@/assets/multitoken-buy.jpg";
 import { HoldersSection } from "@/components/HoldersSection";
+import PresaleSection from "@/components/PresaleSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -598,7 +599,10 @@ function Index() {
         </div>
       </section>
 
+      <PresaleSection />
+
       <HoldersSection />
+
 
 
       <section className="ticker-strip">
