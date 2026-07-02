@@ -350,12 +350,6 @@ export default function PresaleSection() {
       `}</style>
 
       <div className="ls-paper">
-        {loaded && (
-          <div className="ls-stamp">
-            {started && !ended ? "Entrada Liberada" : "Aguardando"}
-          </div>
-        )}
-
         <div className="ls-header-row">
           <span className="ls-line" />
           Documento Oficial de Entrada
