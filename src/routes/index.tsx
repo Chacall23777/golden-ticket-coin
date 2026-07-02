@@ -599,7 +599,10 @@ function Index() {
         </div>
       </section>
 
+      <PresaleSection />
+
       <HoldersSection />
+
 
 
       <section className="ticker-strip">
