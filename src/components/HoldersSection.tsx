@@ -291,7 +291,7 @@ export function HoldersSection() {
             <span>CARTEIRAS</span>
           </div>
           <div className="hv-stat">
-            <b>0%</b>
+            <b>3%</b>
             <span>TAXA</span>
           </div>
         </div>
