@@ -18,7 +18,7 @@ import { supabase } from "@/integrations/supabase/client";
 const CONFIG = {
   active: true,
   durationDays: 15,
-  presaleLink: "COLE_O_LINK_DA_MULTITOKEN_AQUI",
+  presaleLink: "https://privatesale.multitoken.top/",
   presalePrice: "0,00000475",
   initialMarketCap: "50.000",
   supportedBy: "Web3 Brasil",
