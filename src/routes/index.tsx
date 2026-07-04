@@ -334,7 +334,7 @@ const tx: Record<Lang, Record<string, string>> = {
     labelSupply: "Supply total",
     valueSupply: "10.000.000.000 $LEGAL",
     labelTax: "Taxa de compra/venda",
-    valueTax: "1%",
+    valueTax: "3%",
     labelLp: "Liquidez",
     valueLp: "Queimada (LP burnt)",
     labelCa: "ENDEREÇO DO CONTRATO (CA)CONTRACT RENOUNCED",
