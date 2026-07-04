@@ -20,21 +20,21 @@ type Intent =
   | "holders";
 
 const RESPOSTAS: Record<Intent, string> = {
-  ca: `📋 **Contract Address (CA)**\n\nAinda não deployado. Será anunciado oficialmente no [X @legal_elon](https://x.com/legal_elon) e no [Telegram](https://t.me/+j9lyzSZ4p0FjNjMx). Nunca confie em CA de fontes não oficiais.\n\n\`[EM BREVE]\``,
-  supply: `💰 **Tokenomics**\n\n- Supply: **10.000.000.000**\n- Rede: **Solana**\n- Taxa: **1% compra / 1% venda** (100% → LP)\n- Sem alocação de equipe\n- LP queimada · Contrato renunciado\n\n\`[APPROVED ✓]\``,
-  tax: `💸 **Taxas**\n\n**1%** na compra · **1%** na venda — 100% vai para a LP. Sem taxa oculta, sem wallet de equipe.\n\n\`[TRANSPARENTE ✓]\``,
+  ca: `📋 **Contract Address (CA)**\n\nO endereço oficial do $LEGAL é:\n\n\`XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL\`\n\nConfira sempre no [X @legal_elon](https://x.com/legal_elon). Nunca confie em CAs de fontes não oficiais.\n\n\`[VERIFICADO ✓]\``,
+  supply: `💰 **Tokenomics**\n\n- Supply: **10.000.000.000**\n- Rede: **Solana**\n- Taxa: **3% compra / 3% venda** (100% → LP)\n- Sem alocação de equipe\n- LP queimada · Contrato renunciado\n\n\`[APPROVED ✓]\``,
+  tax: `💸 **Taxas**\n\n**3%** na compra · **3%** na venda — 100% vai para a LP. Sem taxa oculta, sem wallet de equipe.\n\n\`[TRANSPARENTE ✓]\``,
   buy: `🛒 **Como comprar $LEGAL**\n\n1. [Phantom Wallet](https://phantom.app)\n2. Compre SOL e envie para sua wallet\n3. [Raydium](https://raydium.io) ou [Jupiter](https://jup.ag)\n4. Cole o CA e faça o swap\n\n💳 **Pix/Cartão (BRL):** [multitoken.com.br](https://multitoken.com.br)\n\n\`[ENTRADA APROVADA ✓]\``,
   links: `🔗 **Links oficiais**\n\n- [Website](https://elonlegal.sale)\n- [X @legal_elon](https://x.com/legal_elon)\n- [Telegram](https://t.me/+j9lyzSZ4p0FjNjMx)\n- [CMC Community](https://coinmarketcap.com/community/profile/legal_)\n- DexScreener: em breve\n- Solscan: em breve\n\n\`[VERIFICADO ✓]\``,
   lp: `🔥 **Segurança**\n\n- **LP Queimada:** liquidez permanentemente bloqueada — ninguém pode remover.\n- **Contrato Renunciado:** zero mudanças maliciosas possíveis.\n\n\`[SAFU ✓]\``,
   about: `🏛️ **Origem**\n\nInspirado no tweet do Elon: *"o caminho certo deveria ser o fácil."* Trocamos "imigração" por "memecoin" — **$LEGAL** é o token de quem entra pela porta da frente. LP queimada, contrato renunciado, 0% para equipe.\n\n\`[APPROVED ✓]\``,
-  holders: `🏆 **Área dos Holders**\n\nHolders com **5M+ $LEGAL** acessam área exclusiva para postar no X direto pelo site.\n\nCarteiras: Phantom · Solflare · Jupiter | Taxa: **1%**\n\n\`[VIP ✓]\``,
+  holders: `🏆 **Área dos Holders**\n\nHolders com **5M+ $LEGAL** acessam área exclusiva para postar no X direto pelo site.\n\nCarteiras: Phantom · Solflare · Jupiter | Taxa: **3%**\n\n\`[VIP ✓]\``,
 };
 
 function detectIntent(text: string): Intent | null {
   const t = text.toLowerCase();
   if (/\b(ca|contract|contrat|address|endere[çc]o)\b/.test(t)) return "ca";
   if (/\b(supply|suply|oferta|bilh|billion|total|circulat|tokenomics)\b/.test(t)) return "supply";
-  if (/\b(tax|taxa|imposto|fee|1%|buy tax|sell tax)\b/.test(t)) return "tax";
+  if (/\b(tax|taxa|imposto|fee|3%|buy tax|sell tax)\b/.test(t)) return "tax";
   if (/\b(comprar|como comprar|buy|how to buy|raydium|jup|jupiter|phantom|pix|cart[ãa]o|multitoken)\b/.test(t)) return "buy";
   if (/\b(link|twitter|telegram|x\.com|cmc|coinmarket|dex|solscan|site|website|oficial)\b/.test(t)) return "links";
   if (/\b(lp|liquidez|liquidity|renunci|renounce|queima|burnt|burn|safu|segur|rug)\b/.test(t)) return "lp";

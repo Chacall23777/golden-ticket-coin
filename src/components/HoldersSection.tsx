@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
 // ⚠️ CONFIGURAR ANTES DE PUBLICAR:
-const LEGAL_MINT = "COLE_O_CA_DO_TOKEN_LEGAL_AQUI";
+const LEGAL_MINT = "XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL";
 const TWITTER_CLIENT_ID = "COLE_O_CLIENT_ID_DO_APP_TWITTER_AQUI";
 const TWITTER_REDIRECT_URI = "https://www.elonlegal.sale/callback";
 const MIN_BALANCE = 5_000_000;

@@ -17,10 +17,10 @@ FULL KNOWLEDGE BASE — $LEGAL
 - Network: Solana
 - Supply: 10,000,000,000 (10 billion tokens)
 - No team allocation — 100% fair launch
-- Buy Tax: 1% → goes entirely to LP
-- Sell Tax: 1% → goes entirely to LP
+- Buy Tax: 3% → goes entirely to LP
+- Sell Tax: 3% → goes entirely to LP
 - No hidden fees, no team wallet
-- CA (Contract Address): Not deployed yet. Will be officially announced on X (@legal_elon) and Telegram only. Warn users to never trust a CA from unofficial sources.
+- CA (Contract Address): XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL (Officially announced on X @legal_elon and Telegram).
 - LP: Permanently Burnt (LP Burnt ✓)
 - Contract: Renounced (ownership renounced ✓)
 
@@ -59,7 +59,7 @@ Step 4: Paste the $LEGAL CA and swap SOL for $LEGAL
 - Holders with 5,000,000+ $LEGAL tokens unlock an exclusive section on the website
 - They can connect their wallet, prove their balance, and post directly to X (Twitter) on behalf of the $LEGAL community
 - Supported wallets: Phantom, Solflare, Jupiter Wallet
-- Minimum: 5M $LEGAL | Fee: 0% | Connected wallets: up to 3
+- Minimum: 5M $LEGAL | Fee: 3% | Connected wallets: up to 3
 
 ── ALLIES / MASCOTS ──
 Shiba Officer, Doge Passport, Rally Doge, Elon Approved, Official Queue, Final Stamp — all part of the visual universe of $LEGAL as immigration officers approving entries.
@@ -67,7 +67,7 @@ Shiba Officer, Doge Passport, Rally Doge, Elon Approved, Official Queue, Final S
 ── TOKENOMICS SUMMARY ──
 - Total Supply: 10 billion
 - Team allocation: 0%
-- Buy/Sell tax: 1% each (100% to LP)
+- Buy/Sell tax: 3% each (100% to LP)
 - LP: Burnt
 - Contract: Renounced
 - Network: Solana
