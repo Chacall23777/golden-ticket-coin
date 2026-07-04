@@ -488,7 +488,7 @@ function Index() {
   const [copied, setCopied] = useState(false);
   const [confetti, setConfetti] = useState<Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>>([]);
   const rootRef = useRef<HTMLDivElement>(null);
-  const ca = "COLE_O_ENDERECO_DO_CONTRATO_AQUI";
+  const ca = "XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL";
   const t = tx[lang];
 
   const copy = () => {
