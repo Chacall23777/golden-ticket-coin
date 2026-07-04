@@ -311,7 +311,7 @@ export function HoldersSection() {
               </div>
               <div className="hv-wallets">
                 {WALLETS.map((w) => {
-                  const has = !!w.detect();
+                  const has = mounted && !!w.detect();
                   return (
                     <button
                       key={w.key}
