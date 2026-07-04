@@ -576,7 +576,7 @@ function Index() {
             <button className={lang === "pt" ? "active" : ""} onClick={() => setLang("pt")}>PT</button>
             <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
           </div>
-          <a href="#howto" className="nav-cta">{t.navCta}</a>
+          <a href="https://privatesale.multitoken.top/" target="_blank" rel="noopener noreferrer" className="nav-cta">{t.navCta}</a>
         </div>
       </nav>
 
