@@ -576,7 +576,7 @@ function Index() {
             <button className={lang === "pt" ? "active" : ""} onClick={() => setLang("pt")}>PT</button>
             <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
           </div>
-          <a href="#howto" className="nav-cta">{t.navCta}</a>
+          <a href="https://privatesale.multitoken.top/" target="_blank" rel="noopener noreferrer" className="nav-cta">{t.navCta}</a>
         </div>
       </nav>
 
@@ -587,7 +587,7 @@ function Index() {
             <h1>{t.heroH1a}<span>{t.heroH1b}</span></h1>
             <p className="lead">{t.heroLead}</p>
             <div className="hero-actions">
-              <a href="#howto" className="btn-primary" onClick={fireConfetti}>{t.heroBtnPrimary}</a>
+              <a href="https://privatesale.multitoken.top/" target="_blank" rel="noopener noreferrer" className="btn-primary">{t.heroBtnPrimary}</a>
               <a href="#historia" className="btn-secondary">{t.heroBtnSecondary}</a>
             </div>
           </div>
