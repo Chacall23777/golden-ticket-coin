@@ -121,7 +121,12 @@ export function HoldersSection() {
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [debugClicks, setDebugClicks] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // reveal-on-scroll
   useEffect(() => {
@@ -306,7 +311,7 @@ export function HoldersSection() {
               </div>
               <div className="hv-wallets">
                 {WALLETS.map((w) => {
-                  const has = !!w.detect();
+                  const has = mounted && !!w.detect();
                   return (
                     <button
                       key={w.key}
