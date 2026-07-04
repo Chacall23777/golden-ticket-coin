@@ -328,7 +328,7 @@ const tx: Record<Lang, Record<string, string>> = {
     step4Link: "Ver o contrato ↓",
     tokenomicsEyebrow: "Certificado oficial",
     tokenomicsH2: "Tokenomics",
-    tokenomicsP: "Sem alocação escondida para a equipe, 1% de taxa na compra e venda.",
+    tokenomicsP: "Sem alocação escondida para a equipe, 3% de taxa na compra e venda.",
     ledgerCert: "certificado nº LE-0001",
     ledgerNet: "rede: solana",
     labelSupply: "Supply total",
