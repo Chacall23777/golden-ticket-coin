@@ -49,7 +49,7 @@ Step 4: Paste the $LEGAL CA and swap SOL for $LEGAL
 - Telegram: https://t.me/+j9lyzSZ4p0FjNjMx
 - CoinMarketCap Community: https://coinmarketcap.com/community/profile/legal_
 - DexScreener: coming soon
-- Solscan: coming soon
+- Solscan: https://solscan.io/token/XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL
 - Pump.fun community: coming soon
 - Raydium: https://raydium.io
 - Jupiter: https://jup.ag

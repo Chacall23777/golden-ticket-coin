@@ -785,7 +785,7 @@ function Index() {
           <a className="social-pill" href="https://t.me/+j9lyzSZ4p0FjNjMx" target="_blank" rel="noreferrer">Telegram</a>
           <a className="social-pill" href="https://coinmarketcap.com/community/profile/legal_" target="_blank" rel="noreferrer">CMC Community</a>
           <a className="social-pill" href="#" target="_blank" rel="noreferrer">Dex Screener</a>
-          <a className="social-pill" href="#" target="_blank" rel="noreferrer">Solscan</a>
+          <a className="social-pill" href="https://solscan.io/token/XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL" target="_blank" rel="noreferrer">Solscan</a>
         </div>
       </section>
 
