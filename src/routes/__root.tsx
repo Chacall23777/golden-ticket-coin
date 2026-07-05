@@ -4,7 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
-  useLocation,
+  
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -13,7 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingWeb3Brasil } from "../components/FloatingWeb3Brasil";
-import FloatingLangSwitcher from "../components/FloatingLangSwitcher";
+
 
 
 function NotFoundComponent() {
@@ -126,13 +126,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const location = useLocation();
-
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      {location.pathname !== "/legal" && <FloatingLangSwitcher />}
       <FloatingWeb3Brasil />
     </QueryClientProvider>
   );
