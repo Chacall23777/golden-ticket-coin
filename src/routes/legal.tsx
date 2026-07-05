@@ -685,6 +685,24 @@ function LegalPage() {
           <a href="#community">{t.navCommunity}</a>
           <Link to="/" className="nav-presale-link">{t.navPresale}</Link>
         </div>
+        <div className="lang-toggle" aria-label="Language switcher">
+          <button
+            type="button"
+            onClick={() => setLang("pt")}
+            aria-pressed={lang === "pt"}
+            className={lang === "pt" ? "active" : ""}
+          >
+            PT
+          </button>
+          <button
+            type="button"
+            onClick={() => setLang("en")}
+            aria-pressed={lang === "en"}
+            className={lang === "en" ? "active" : ""}
+          >
+            EN
+          </button>
+        </div>
         <Link to="/" className="nav-cta">{t.navCta}</Link>
       </nav>
 
