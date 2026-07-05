@@ -25,7 +25,51 @@ const CONFIG = {
   adminKey: "legal2026",
 };
 
+type Lang = "pt" | "en";
 type TimeLeft = { d: number; h: number; m: number; s: number } | null;
+
+const T: Record<Lang, Record<string, string>> = {
+  pt: {
+    header: "Documento Oficial de Entrada",
+    title: "PRÉ-VENDA $LEGAL ABERTA",
+    sub: `Sua entrada legal antes do lançamento oficial. Vagas por tempo limitado — ${CONFIG.durationDays} dias de janela de embarque.`,
+    d: "Dias", h: "Horas", m: "Min", s: "Seg",
+    ended: "Pré-venda encerrada",
+    cta: "Comprar na Pré-venda",
+    price: "Preço pré-venda",
+    mcap: "Market Cap inicial",
+    duration: "Duração",
+    durationVal: `${CONFIG.durationDays} dias`,
+    supported: "Apoiado por",
+    badge1: "LP será queimada",
+    badge2: "Contrato será renunciado",
+    badge3: "Apoiado pela Web3 Brasil",
+    adminStart: "▶ Iniciar Pré-venda",
+    adminStarting: "Iniciando...",
+    adminRunning: "✓ Pré-venda em andamento (iniciada por você)",
+    waiting: "Cronômetro aguardando início",
+  },
+  en: {
+    header: "Official Entry Document",
+    title: "$LEGAL PRESALE OPEN",
+    sub: `Your legal entry before the official launch. Limited spots — ${CONFIG.durationDays}-day boarding window.`,
+    d: "Days", h: "Hours", m: "Min", s: "Sec",
+    ended: "Presale ended",
+    cta: "Buy in Presale",
+    price: "Presale price",
+    mcap: "Initial Market Cap",
+    duration: "Duration",
+    durationVal: `${CONFIG.durationDays} days`,
+    supported: "Backed by",
+    badge1: "LP will be burned",
+    badge2: "Contract will be renounced",
+    badge3: "Backed by Web3 Brasil",
+    adminStart: "▶ Start Presale",
+    adminStarting: "Starting...",
+    adminRunning: "✓ Presale running (started by you)",
+    waiting: "Countdown waiting to start",
+  },
+};
 
 function getTimeLeft(endDate: Date): TimeLeft {
   const diff = endDate.getTime() - Date.now();
@@ -47,6 +91,7 @@ function FlipDigit({ value, label }: { value: number; label: string }) {
     </div>
   );
 }
+
 
 export default function PresaleSection() {
   const [, setNow] = useState(Date.now());
