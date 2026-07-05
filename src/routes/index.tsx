@@ -127,6 +127,7 @@ function HomePresale() {
       </nav>
       <div style={{ paddingTop: 60 }}>
         <PresaleSection lang={lang} />
+        <BonusBanner lang={lang} />
       </div>
     </div>
   );
