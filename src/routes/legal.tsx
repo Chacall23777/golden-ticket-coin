@@ -437,6 +437,8 @@ const tx: Record<Lang, Record<string, string>> = {
     w3bTitleHi: "WEB3BRASIL",
     w3bSub: "$LEGAL é apoiado pela WEB3BRASIL — a comunidade referência em Web3, DeFi e memecoins no Brasil. Conteúdo, educação e curadoria pra você entrar no cripto pela porta certa.",
     w3bBtn: "Visitar WEB3BRASIL →",
+  },
+
 
   en: {
     navStory: "The Story",
