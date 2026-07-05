@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import PresaleSection from "@/components/PresaleSection";
+import { useLang } from "@/hooks/useLang";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -14,10 +14,8 @@ export const Route = createFileRoute("/")({
   component: HomePresale,
 });
 
-type Lang = "pt" | "en";
-
 function HomePresale() {
-  const [lang, setLang] = useState<Lang>("pt");
+  const [lang, setLang] = useLang();
   const aboutLabel = lang === "pt" ? "Sobre o projeto →" : "About the project →";
 
   const btnBase: React.CSSProperties = {

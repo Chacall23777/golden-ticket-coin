@@ -14,6 +14,7 @@ import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 import multitokenBuy from "@/assets/multitoken-buy.jpg";
 import web3brasilLogo from "@/assets/web3brasil-logo.png";
 import { HoldersSection } from "@/components/HoldersSection";
+import { useLang } from "@/hooks/useLang";
 
 
 export const Route = createFileRoute("/legal")({
@@ -596,7 +597,7 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
 
 
 function LegalPage() {
-  const [lang, setLang] = useState<Lang>("pt");
+  const [lang, setLang] = useLang();
   const [copied, setCopied] = useState(false);
   const [confetti, setConfetti] = useState<Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>>([]);
   const rootRef = useRef<HTMLDivElement>(null);
