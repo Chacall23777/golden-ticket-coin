@@ -12,7 +12,9 @@ import memeDogePassport from "@/assets/meme-doge-passport.jpg";
 import memeDogeRally from "@/assets/meme-doge-rally.jpg";
 import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 import multitokenBuy from "@/assets/multitoken-buy.jpg";
+import web3brasilLogo from "@/assets/web3brasil-logo.png";
 import { HoldersSection } from "@/components/HoldersSection";
+
 
 export const Route = createFileRoute("/legal")({
   head: () => ({
@@ -244,6 +246,46 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .btn-buy:hover{transform:translateY(-3px); box-shadow:0 16px 40px rgba(180,80,255,0.6);}
 .buy-fine{display:block; margin-top:14px; font-family:var(--mono); font-size:11px; color:rgba(245,241,232,0.55); letter-spacing:1.5px;}
 
+/* --- 10% Bonus banner --- */
+.bonus-band{background:linear-gradient(135deg,#0a0f1e 0%,#151030 60%,#0a0f1e 100%); position:relative; overflow:hidden; padding:70px 5vw !important; border-top:1px solid rgba(0,229,255,0.18); border-bottom:1px solid rgba(180,80,255,0.18);}
+.bonus-band::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 15% 30%, rgba(0,229,255,0.22), transparent 45%), radial-gradient(circle at 85% 70%, rgba(255,80,200,0.22), transparent 50%); pointer-events:none;}
+.bonus-band::after{content:""; position:absolute; inset:0; background-image:repeating-linear-gradient(90deg, transparent 0 60px, rgba(0,229,255,0.05) 60px 61px); pointer-events:none;}
+.bonus-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:auto 1fr auto; gap:36px; align-items:center; position:relative; z-index:1;}
+@media (max-width:900px){.bonus-inner{grid-template-columns:1fr; text-align:center; gap:24px;}}
+.bonus-seal{width:120px; height:120px; border-radius:50%; border:3px solid #00E5FF; background:radial-gradient(circle,#151030 60%,transparent 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:var(--serif); color:#00E5FF; box-shadow:0 0 40px rgba(0,229,255,0.4), inset 0 0 20px rgba(180,80,255,0.25); transform:rotate(-6deg); animation:bonusPulse 2.4s ease-in-out infinite;}
+.bonus-seal .b-num{font-size:38px; font-weight:700; line-height:1; background:linear-gradient(90deg,#00E5FF,#B450FF); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.bonus-seal .b-lbl{font-size:10px; letter-spacing:3px; margin-top:4px; color:#B450FF; text-transform:uppercase;}
+@keyframes bonusPulse{0%,100%{box-shadow:0 0 40px rgba(0,229,255,0.4), inset 0 0 20px rgba(180,80,255,0.25);}50%{box-shadow:0 0 60px rgba(180,80,255,0.55), inset 0 0 24px rgba(0,229,255,0.35);}}
+@media (max-width:900px){.bonus-seal{margin:0 auto;}}
+.bonus-copy .b-eyebrow{display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; color:#00E5FF; text-transform:uppercase; padding:6px 12px; border:1px solid rgba(0,229,255,0.5); border-radius:2px; background:rgba(0,229,255,0.08); margin-bottom:12px;}
+.bonus-copy h3{font-family:var(--serif); font-weight:400; font-size:clamp(24px,3.4vw,34px); color:#fff; margin:0 0 10px; line-height:1.15;}
+.bonus-copy h3 span{background:linear-gradient(90deg,#00E5FF,#FF50C8); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.bonus-copy p{color:rgba(245,240,232,0.75); font-size:14px; line-height:1.6; margin:0 0 14px; max-width:520px; font-family:var(--sans);}
+@media (max-width:900px){.bonus-copy p{margin-left:auto; margin-right:auto;}}
+.bonus-count{display:flex; gap:8px; justify-content:center; flex-wrap:wrap;}
+.bonus-cell{background:rgba(10,15,30,0.75); border:1px solid rgba(0,229,255,0.35); border-radius:6px; padding:10px 12px; min-width:64px; text-align:center; box-shadow:0 4px 18px rgba(0,229,255,0.15);}
+.bonus-cell .n{font-family:var(--mono); font-weight:700; font-size:clamp(22px,3.4vw,30px); color:#fff; line-height:1;}
+.bonus-cell .l{font-family:var(--mono); font-size:9px; letter-spacing:2px; color:rgba(245,240,232,0.6); text-transform:uppercase; margin-top:6px;}
+.bonus-cta{display:inline-flex; align-items:center; gap:10px; padding:16px 26px; border-radius:4px; background:linear-gradient(90deg,#00E5FF,#B450FF); color:#06091a; font-family:var(--serif); font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:13px; box-shadow:0 10px 30px rgba(0,229,255,0.4), inset 0 0 0 1px rgba(255,255,255,0.35); transition:transform .2s, box-shadow .2s; white-space:nowrap;}
+.bonus-cta:hover{transform:translateY(-3px); box-shadow:0 16px 40px rgba(180,80,255,0.6), inset 0 0 0 1px rgba(255,255,255,0.5);}
+.bonus-ended{padding:14px 22px; background:rgba(255,255,255,0.06); border:1px dashed rgba(245,240,232,0.3); color:rgba(245,240,232,0.75); border-radius:4px; font-family:var(--mono); letter-spacing:2px; text-transform:uppercase; font-size:12px;}
+
+/* --- WEB3BRASIL partner banner --- */
+.w3b-band{background:linear-gradient(135deg,#04060f 0%,#0d1230 55%,#1a0838 100%); position:relative; overflow:hidden; padding:70px 5vw !important;}
+.w3b-band::before{content:""; position:absolute; inset:0; background:radial-gradient(circle at 30% 40%, rgba(0,229,255,0.18), transparent 50%), radial-gradient(circle at 75% 60%, rgba(180,80,255,0.20), transparent 55%); pointer-events:none;}
+.w3b-band::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(45deg, transparent 0 100px, rgba(0,229,255,0.04) 100px 101px); pointer-events:none;}
+.w3b-card{max-width:1080px; margin:0 auto; position:relative; z-index:1; background:rgba(10,10,24,0.55); border:1px solid rgba(0,229,255,0.28); border-radius:12px; padding:34px; display:grid; grid-template-columns:1.1fr 1fr; gap:38px; align-items:center; backdrop-filter:blur(8px); box-shadow:0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(180,80,255,0.15);}
+@media (max-width:820px){.w3b-card{grid-template-columns:1fr; text-align:center; padding:26px;}}
+.w3b-logo-wrap{display:flex; justify-content:center; align-items:center; padding:14px; background:radial-gradient(ellipse at center, rgba(0,229,255,0.10), transparent 70%); border-radius:10px;}
+.w3b-logo-wrap img{width:100%; max-width:420px; height:auto; display:block; filter:drop-shadow(0 8px 24px rgba(0,229,255,0.35));}
+.w3b-copy .w3b-eye{display:inline-block; font-family:var(--mono); font-size:11px; letter-spacing:3px; color:#B450FF; text-transform:uppercase; padding:6px 12px; border:1px solid rgba(180,80,255,0.5); border-radius:2px; background:rgba(180,80,255,0.08); margin-bottom:12px;}
+.w3b-copy h3{font-family:var(--serif); font-weight:400; font-size:clamp(22px,3vw,30px); color:#fff; margin:0 0 12px; line-height:1.2;}
+.w3b-copy h3 span{background:linear-gradient(90deg,#00E5FF,#B450FF); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.w3b-copy p{color:rgba(245,240,232,0.75); font-size:14.5px; line-height:1.65; margin:0 0 18px; font-family:var(--sans);}
+.w3b-cta{display:inline-flex; align-items:center; gap:10px; padding:14px 24px; border-radius:4px; background:linear-gradient(90deg,#B450FF,#00E5FF); color:#06091a; font-family:var(--serif); font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:12px; box-shadow:0 10px 26px rgba(180,80,255,0.4); transition:transform .2s, box-shadow .2s;}
+.w3b-cta:hover{transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,229,255,0.55);}
+
+
 @media (max-width:560px){
   .legal-root section{padding:80px 5vw;}
   .hero{padding:120px 5vw 60px !important;}
@@ -383,7 +425,23 @@ const tx: Record<Lang, Record<string, string>> = {
     buyChipSol: "Entrega na Solana",
     buyBtn: "Comprar pela Multitoken →",
     buyFine: "Processado pela Multitoken · Solana Token Swap Platform",
+    bonusEyebrow: "Oferta por tempo limitado",
+    bonusTitle: "Bônus de ",
+    bonusTitleHi: "10% em $LEGAL",
+    bonusSub: "Compre agora na pré-venda e receba +10% de tokens extras. Termina em 10 de julho de 2026, 00:00 UTC.",
+    bonusBtn: "COMPRAR $LEGAL AGORA",
+    bonusEnded: "Bônus encerrado",
+    bonusBadge: "+10%",
+    bonusBadgeLbl: "Bônus",
+    dLabel: "Dias", hLabel: "Horas", mLabel: "Min", sLabel: "Seg",
+    w3bEyebrow: "Community Partner Oficial",
+    w3bTitle: "Powered by ",
+    w3bTitleHi: "WEB3BRASIL",
+    w3bSub: "$LEGAL é apoiado pela WEB3BRASIL — a comunidade referência em Web3, DeFi e memecoins no Brasil. Conteúdo, educação e curadoria pra você entrar no cripto pela porta certa.",
+    w3bBtn: "Visitar WEB3BRASIL →",
   },
+
+
   en: {
     navStory: "The Story",
     navHowto: "How to Buy",
@@ -492,8 +550,102 @@ const tx: Record<Lang, Record<string, string>> = {
     buyChipSol: "Delivered on Solana",
     buyBtn: "Buy via Multitoken →",
     buyFine: "Processed by Multitoken · Solana Token Swap Platform",
+    bonusEyebrow: "Limited-time offer",
+    bonusTitle: "Get a ",
+    bonusTitleHi: "10% $LEGAL Bonus",
+    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 00:00 UTC.",
+    bonusBtn: "BUY $LEGAL NOW",
+    bonusEnded: "Bonus ended",
+    bonusBadge: "+10%",
+    bonusBadgeLbl: "Bonus",
+    dLabel: "Days", hLabel: "Hours", mLabel: "Min", sLabel: "Sec",
+    w3bEyebrow: "Official Community Partner",
+    w3bTitle: "Powered by ",
+    w3bTitleHi: "WEB3BRASIL",
+    w3bSub: "$LEGAL is backed by WEB3BRASIL — Brazil's leading community for Web3, DeFi and memecoins. Content, education and curation to help you enter crypto the right way.",
+    w3bBtn: "Visit WEB3BRASIL →",
   },
 };
+
+const BONUS_END = Date.UTC(2026, 6, 10, 0, 0, 0); // July 10, 2026 00:00 UTC
+const PRESALE_LINK = "https://privatesale.multitoken.top/";
+
+function useCountdown(target: number) {
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const i = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(i);
+  }, []);
+  const diff = Math.max(0, target - now);
+  return {
+    ended: diff === 0,
+    d: Math.floor(diff / 86400000),
+    h: Math.floor((diff % 86400000) / 3600000),
+    m: Math.floor((diff % 3600000) / 60000),
+    s: Math.floor((diff % 60000) / 1000),
+  };
+}
+
+function BonusBanner({ t }: { t: Record<string, string> }) {
+  const c = useCountdown(BONUS_END);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return (
+    <section className="bonus-band" aria-label="10% Bonus Offer">
+      <div className="bonus-inner reveal">
+        <div className="bonus-seal" aria-hidden="true">
+          <span className="b-num">{t.bonusBadge}</span>
+          <span className="b-lbl">{t.bonusBadgeLbl}</span>
+        </div>
+        <div className="bonus-copy">
+          <span className="b-eyebrow">{t.bonusEyebrow}</span>
+          <h3>{t.bonusTitle}<span>{t.bonusTitleHi}</span></h3>
+          <p>{t.bonusSub}</p>
+          {c.ended ? (
+            <span className="bonus-ended">{t.bonusEnded}</span>
+          ) : (
+            <div className="bonus-count" role="timer" aria-live="polite">
+              <div className="bonus-cell"><div className="n">{pad(c.d)}</div><div className="l">{t.dLabel}</div></div>
+              <div className="bonus-cell"><div className="n">{pad(c.h)}</div><div className="l">{t.hLabel}</div></div>
+              <div className="bonus-cell"><div className="n">{pad(c.m)}</div><div className="l">{t.mLabel}</div></div>
+              <div className="bonus-cell"><div className="n">{pad(c.s)}</div><div className="l">{t.sLabel}</div></div>
+            </div>
+          )}
+        </div>
+        <a className="bonus-cta" href={PRESALE_LINK} target="_blank" rel="noopener noreferrer">
+          {t.bonusBtn} →
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
+  return (
+    <section className="w3b-band" aria-label="WEB3BRASIL Community Partner">
+      <div className="w3b-card reveal">
+        <a
+          className="w3b-logo-wrap"
+          href="https://web3brasil.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WEB3BRASIL"
+        >
+          <img src={web3brasilLogo} alt="WEB3BRASIL logo" loading="lazy" width={1280} height={512} />
+        </a>
+        <div className="w3b-copy">
+          <span className="w3b-eye">{t.w3bEyebrow}</span>
+          <h3>{t.w3bTitle}<span>{t.w3bTitleHi}</span></h3>
+          <p>{t.w3bSub}</p>
+          <a className="w3b-cta" href="https://web3brasil.com.br" target="_blank" rel="noopener noreferrer">
+            {t.w3bBtn}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 
 function LegalPage() {
   const [lang, setLang] = useState<Lang>("pt");
@@ -612,7 +764,10 @@ function LegalPage() {
         </div>
       </section>
 
+      <BonusBanner t={t} />
+
       <HoldersSection />
+
 
       <section className="ticker-strip">
         <div className="track">
@@ -747,7 +902,10 @@ function LegalPage() {
         </div>
       </section>
 
+      <Web3BrasilBanner t={t} />
+
       <section id="pumpfun" className="pumpfun">
+
         <div className="section-head reveal">
           <span className="eyebrow">{t.pumpfunEyebrow}</span>
           <h2>{t.pumpfunH2}</h2>

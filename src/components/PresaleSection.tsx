@@ -25,7 +25,51 @@ const CONFIG = {
   adminKey: "legal2026",
 };
 
+type Lang = "pt" | "en";
 type TimeLeft = { d: number; h: number; m: number; s: number } | null;
+
+const T: Record<Lang, Record<string, string>> = {
+  pt: {
+    header: "Documento Oficial de Entrada",
+    title: "PRÉ-VENDA $LEGAL ABERTA",
+    sub: `Sua entrada legal antes do lançamento oficial. Vagas por tempo limitado — ${CONFIG.durationDays} dias de janela de embarque.`,
+    d: "Dias", h: "Horas", m: "Min", s: "Seg",
+    ended: "Pré-venda encerrada",
+    cta: "Comprar na Pré-venda",
+    price: "Preço pré-venda",
+    mcap: "Market Cap inicial",
+    duration: "Duração",
+    durationVal: `${CONFIG.durationDays} dias`,
+    supported: "Apoiado por",
+    badge1: "LP será queimada",
+    badge2: "Contrato será renunciado",
+    badge3: "Apoiado pela Web3 Brasil",
+    adminStart: "▶ Iniciar Pré-venda",
+    adminStarting: "Iniciando...",
+    adminRunning: "✓ Pré-venda em andamento (iniciada por você)",
+    waiting: "Cronômetro aguardando início",
+  },
+  en: {
+    header: "Official Entry Document",
+    title: "$LEGAL PRESALE OPEN",
+    sub: `Your legal entry before the official launch. Limited spots — ${CONFIG.durationDays}-day boarding window.`,
+    d: "Days", h: "Hours", m: "Min", s: "Sec",
+    ended: "Presale ended",
+    cta: "Buy in Presale",
+    price: "Presale price",
+    mcap: "Initial Market Cap",
+    duration: "Duration",
+    durationVal: `${CONFIG.durationDays} days`,
+    supported: "Backed by",
+    badge1: "LP will be burned",
+    badge2: "Contract will be renounced",
+    badge3: "Backed by Web3 Brasil",
+    adminStart: "▶ Start Presale",
+    adminStarting: "Starting...",
+    adminRunning: "✓ Presale running (started by you)",
+    waiting: "Countdown waiting to start",
+  },
+};
 
 function getTimeLeft(endDate: Date): TimeLeft {
   const diff = endDate.getTime() - Date.now();
@@ -48,7 +92,10 @@ function FlipDigit({ value, label }: { value: number; label: string }) {
   );
 }
 
-export default function PresaleSection() {
+
+export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
+  const t = T[lang];
+
   const [, setNow] = useState(Date.now());
   const [startTime, setStartTime] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
@@ -352,55 +399,52 @@ export default function PresaleSection() {
       <div className="ls-paper">
         <div className="ls-header-row">
           <span className="ls-line" />
-          Documento Oficial de Entrada
+          {t.header}
           <span className="ls-line" />
         </div>
 
-        <h2 className="ls-title">PRÉ-VENDA $LEGAL ABERTA</h2>
-        <p className="ls-subtitle">
-          Sua entrada legal antes do lançamento oficial. Vagas por tempo limitado —
-          {" "}{CONFIG.durationDays} dias de janela de embarque.
-        </p>
+        <h2 className="ls-title">{t.title}</h2>
+        <p className="ls-subtitle">{t.sub}</p>
 
         {started && !ended && timeLeft && (
           <div className="ls-board">
-            <FlipDigit value={timeLeft.d} label="Dias" />
+            <FlipDigit value={timeLeft.d} label={t.d} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={timeLeft.h} label="Horas" />
+            <FlipDigit value={timeLeft.h} label={t.h} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={timeLeft.m} label="Min" />
+            <FlipDigit value={timeLeft.m} label={t.m} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={timeLeft.s} label="Seg" />
+            <FlipDigit value={timeLeft.s} label={t.s} />
           </div>
         )}
 
         {loaded && !started && (
-          <div className="ls-board" aria-label="Cronômetro aguardando início">
-            <FlipDigit value={CONFIG.durationDays} label="Dias" />
+          <div className="ls-board" aria-label={t.waiting}>
+            <FlipDigit value={CONFIG.durationDays} label={t.d} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={0} label="Horas" />
+            <FlipDigit value={0} label={t.h} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={0} label="Min" />
+            <FlipDigit value={0} label={t.m} />
             <span className="ls-colon">:</span>
-            <FlipDigit value={0} label="Seg" />
+            <FlipDigit value={0} label={t.s} />
           </div>
         )}
 
 
         {started && ended && (
-          <div className="ls-soon">Pré-venda encerrada</div>
+          <div className="ls-soon">{t.ended}</div>
         )}
 
         {isAdmin && loaded && !started && (
           <div className="ls-admin-wrap">
             <button className="ls-admin-btn" onClick={handlePlay} disabled={launching}>
-              {launching ? "Iniciando..." : "▶ Iniciar Pré-venda"}
+              {launching ? t.adminStarting : t.adminStart}
             </button>
           </div>
         )}
         {isAdmin && started && !ended && (
           <div className="ls-admin-wrap">
-            <span className="ls-admin-note">✓ Pré-venda em andamento (iniciada por você)</span>
+            <span className="ls-admin-note">{t.adminRunning}</span>
           </div>
         )}
 
@@ -411,35 +455,36 @@ export default function PresaleSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Comprar na Pré-venda <span className="ls-arrow">→</span>
+            {t.cta} <span className="ls-arrow">→</span>
           </a>
         </div>
 
         <div className="ls-grid">
           <div className="ls-field">
-            <div className="ls-k">Preço pré-venda</div>
+            <div className="ls-k">{t.price}</div>
             <div className="ls-v">${CONFIG.presalePrice}</div>
           </div>
           <div className="ls-field">
-            <div className="ls-k">Market Cap inicial</div>
+            <div className="ls-k">{t.mcap}</div>
             <div className="ls-v">${CONFIG.initialMarketCap}</div>
           </div>
           <div className="ls-field">
-            <div className="ls-k">Duração</div>
-            <div className="ls-v">{CONFIG.durationDays} dias</div>
+            <div className="ls-k">{t.duration}</div>
+            <div className="ls-v">{t.durationVal}</div>
           </div>
           <div className="ls-field">
-            <div className="ls-k">Apoiado por</div>
+            <div className="ls-k">{t.supported}</div>
             <div className="ls-v">{CONFIG.supportedBy}</div>
           </div>
         </div>
 
         <div className="ls-badges">
-          <span className="ls-badge"><span className="ls-dot" /> LP será queimada</span>
-          <span className="ls-badge"><span className="ls-dot" /> Contrato será renunciado</span>
-          <span className="ls-badge"><span className="ls-dot" /> Apoiado pela Web3 Brasil</span>
+          <span className="ls-badge"><span className="ls-dot" /> {t.badge1}</span>
+          <span className="ls-badge"><span className="ls-dot" /> {t.badge2}</span>
+          <span className="ls-badge"><span className="ls-dot" /> {t.badge3}</span>
         </div>
       </div>
+
     </section>
   );
 }
