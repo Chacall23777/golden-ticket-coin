@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { FloatingWeb3Brasil } from "../components/FloatingWeb3Brasil";
+import FloatingLangSwitcher from "../components/FloatingLangSwitcher";
 
 
 function NotFoundComponent() {
@@ -129,6 +130,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <FloatingLangSwitcher />
       <FloatingWeb3Brasil />
     </QueryClientProvider>
   );
