@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import PresaleSection from "@/components/PresaleSection";
-import BonusBanner from "@/components/BonusBanner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -128,7 +127,6 @@ function HomePresale() {
       </nav>
       <div style={{ paddingTop: 60 }}>
         <PresaleSection lang={lang} />
-        <BonusBanner lang={lang} />
       </div>
     </div>
   );

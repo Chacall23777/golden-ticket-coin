@@ -571,12 +571,13 @@ const BONUS_END = Date.UTC(2026, 6, 10, 0, 0, 0); // July 10, 2026 00:00 UTC
 const PRESALE_LINK = "https://privatesale.multitoken.top/";
 
 function useCountdown(target: number) {
-  const [now, setNow] = useState(() => Date.now());
+  const [now, setNow] = useState<number | null>(null);
   useEffect(() => {
+    setNow(Date.now());
     const i = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(i);
   }, []);
-  const diff = Math.max(0, target - now);
+  const diff = Math.max(0, target - (now ?? target));
   return {
     ended: diff === 0,
     d: Math.floor(diff / 86400000),
