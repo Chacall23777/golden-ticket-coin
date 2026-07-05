@@ -93,7 +93,9 @@ function FlipDigit({ value, label }: { value: number; label: string }) {
 }
 
 
-export default function PresaleSection() {
+export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
+  const t = T[lang];
+
   const [, setNow] = useState(Date.now());
   const [startTime, setStartTime] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
