@@ -1,9 +1,6 @@
-import { useState } from "react";
 import web3brasilLogo from "@/assets/web3brasil-logo.png";
 
 export function FloatingWeb3Brasil() {
-  const [minimized, setMinimized] = useState(false);
-
   return (
     <>
       <style>{CSS}</style>
@@ -11,26 +8,9 @@ export function FloatingWeb3Brasil() {
         href="https://web3brasil.life"
         target="_blank"
         rel="noopener noreferrer"
-        className={`w3b-float ${minimized ? "w3b-float-min" : ""}`}
+        className="w3b-float"
         aria-label="WEB3BRASIL Community Partner"
       >
-        <button
-          type="button"
-          className="w3b-float-close"
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setMinimized((v) => !v);
-          }}
-          aria-label={minimized ? "Expandir banner" : "Minimizar banner"}
-        >
-          {minimized ? (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          ) : (
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-          )}
-        </button>
-
         <div className="w3b-float-inner">
           <div className="w3b-float-logo-wrap">
             <img src={web3brasilLogo} alt="WEB3BRASIL" loading="lazy" />
@@ -55,13 +35,7 @@ const CSS = `
   width:240px;
   text-decoration:none;
   display:block;
-  transition:transform .25s ease, box-shadow .25s ease, width .25s ease;
-}
-.w3b-float-min{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 .w3b-float-inner{
   position:relative;
@@ -76,47 +50,9 @@ const CSS = `
   backdrop-filter:blur(10px);
   overflow:hidden;
 }
-.w3b-float-min .w3b-float-inner{
-  padding:0;
-  border-radius:50%;
-  width:48px;
-  height:48px;
-  justify-content:center;
-  align-items:center;
-  gap:0;
-}
 .w3b-float:hover{
   transform:translateY(-3px);
   box-shadow:0 16px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(180,80,255,0.25), 0 0 28px rgba(0,229,255,0.12);
-}
-.w3b-float-close{
-  position:absolute;
-  top:6px;
-  right:6px;
-  z-index:2;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  color:rgba(245,240,232,0.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  padding:0;
-  transition:all .15s;
-}
-.w3b-float-close:hover{
-  background:rgba(255,255,255,0.18);
-  color:#fff;
-  border-color:rgba(0,229,255,0.5);
-}
-.w3b-float-min .w3b-float-close{
-  top:2px;
-  right:2px;
-  width:16px;
-  height:16px;
 }
 .w3b-float-logo-wrap{
   width:44px;
@@ -128,11 +64,6 @@ const CSS = `
   background:radial-gradient(circle, rgba(0,229,255,0.10), transparent 70%);
   border-radius:50%;
 }
-.w3b-float-min .w3b-float-logo-wrap{
-  width:36px;
-  height:36px;
-  background:none;
-}
 .w3b-float-logo-wrap img{
   width:100%;
   height:100%;
@@ -140,17 +71,11 @@ const CSS = `
   display:block;
   filter:drop-shadow(0 3px 10px rgba(0,229,255,0.25));
 }
-.w3b-float-min .w3b-float-logo-wrap img{
-  filter:drop-shadow(0 3px 10px rgba(0,229,255,0.4));
-}
 .w3b-float-copy{
   display:flex;
   flex-direction:column;
   gap:1px;
   min-width:0;
-}
-.w3b-float-min .w3b-float-copy{
-  display:none;
 }
 .w3b-float-eye{
   font-family:'IBM Plex Mono','Courier New',monospace;
