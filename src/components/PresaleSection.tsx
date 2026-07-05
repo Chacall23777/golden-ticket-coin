@@ -25,6 +25,8 @@ const CONFIG = {
   adminKey: "legal2026",
 };
 
+const BONUS_END_MS = Date.UTC(2026, 6, 10, 0, 0, 0);
+
 type Lang = "pt" | "en";
 type TimeLeft = { d: number; h: number; m: number; s: number } | null;
 
@@ -48,6 +50,11 @@ const T: Record<Lang, Record<string, string>> = {
     adminStarting: "Iniciando...",
     adminRunning: "✓ Pré-venda em andamento (iniciada por você)",
     waiting: "Cronômetro aguardando início",
+    bonusEyebrow: "+10% Bônus",
+    bonusTitle: "Oferta por tempo limitado",
+    bonusSub: "Compre agora na pré-venda e receba +10% de tokens extras. Termina em 10 de julho de 2026, 00:00 UTC.",
+    bonusCta: "Comprar $LEGAL agora",
+    bonusEnded: "Bônus encerrado",
   },
   en: {
     header: "Official Entry Document",
@@ -68,11 +75,28 @@ const T: Record<Lang, Record<string, string>> = {
     adminStarting: "Starting...",
     adminRunning: "✓ Presale running (started by you)",
     waiting: "Countdown waiting to start",
+    bonusEyebrow: "+10% Bonus",
+    bonusTitle: "Limited-time offer",
+    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 00:00 UTC.",
+    bonusCta: "Buy $LEGAL now",
+    bonusEnded: "Bonus ended",
   },
 };
 
 function getTimeLeft(endDate: Date): TimeLeft {
   const diff = endDate.getTime() - Date.now();
+  if (diff <= 0) return null;
+  return {
+    d: Math.floor(diff / 86400000),
+    h: Math.floor((diff % 86400000) / 3600000),
+    m: Math.floor((diff % 3600000) / 60000),
+    s: Math.floor((diff % 60000) / 1000),
+  };
+}
+
+function getTimeLeftFrom(target: number, now: number | null): TimeLeft {
+  if (now === null) return { d: 0, h: 0, m: 0, s: 0 };
+  const diff = target - now;
   if (diff <= 0) return null;
   return {
     d: Math.floor(diff / 86400000),
@@ -96,7 +120,7 @@ function FlipDigit({ value, label }: { value: number; label: string }) {
 export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
   const t = T[lang];
 
-  const [, setNow] = useState(Date.now());
+  const [now, setNow] = useState<number | null>(null);
   const [startTime, setStartTime] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [launching, setLaunching] = useState(false);
@@ -120,6 +144,7 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
       setStartTime((data?.start_time as string | null) ?? null);
       setLoaded(true);
     })();
+    setNow(Date.now());
     const t = setInterval(() => setNow(Date.now()), 1000);
     return () => {
       cancelled = true;
@@ -149,6 +174,7 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
     timeLeft = getTimeLeft(end);
     ended = !timeLeft;
   }
+  const bonusLeft = getTimeLeftFrom(BONUS_END_MS, now);
 
   return (
     <section className="ls-section">
@@ -394,6 +420,113 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
           text-transform: uppercase;
           letter-spacing: 0.04em;
         }
+
+        .ls-bonus-box {
+          margin: -12px auto 30px;
+          padding: 18px;
+          border-radius: 5px;
+          border: 1px solid rgba(11,31,58,0.28);
+          background:
+            linear-gradient(135deg, rgba(179,49,44,0.10), rgba(201,162,74,0.16)),
+            rgba(255,255,255,0.36);
+          box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 16px;
+          align-items: center;
+        }
+        .ls-bonus-copy { min-width: 0; }
+        .ls-bonus-eye {
+          display: inline-block;
+          font-family: 'Space Mono', 'Courier New', monospace;
+          font-weight: 900;
+          font-size: 12px;
+          letter-spacing: 0.1em;
+          color: var(--stamp-red);
+          text-transform: uppercase;
+          margin-bottom: 6px;
+        }
+        .ls-bonus-title {
+          font-family: Georgia, serif;
+          font-weight: 900;
+          font-size: clamp(18px, 3vw, 24px);
+          line-height: 1.15;
+          margin: 0 0 6px;
+          color: var(--ink);
+        }
+        .ls-bonus-sub {
+          margin: 0;
+          font-size: 13px;
+          line-height: 1.45;
+          opacity: 0.78;
+        }
+        .ls-bonus-side {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+        .ls-bonus-count {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(45px, 1fr));
+          gap: 6px;
+          min-width: 220px;
+        }
+        .ls-bonus-cell {
+          background: var(--ink);
+          color: var(--paper);
+          border-radius: 3px;
+          padding: 8px 5px;
+          text-align: center;
+          box-shadow: 0 2px 0 var(--gold);
+        }
+        .ls-bonus-n {
+          font-family: 'Courier New', monospace;
+          font-weight: 900;
+          font-size: 18px;
+          line-height: 1;
+        }
+        .ls-bonus-l {
+          margin-top: 4px;
+          font-family: 'Space Mono', 'Courier New', monospace;
+          font-size: 8px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          opacity: 0.72;
+        }
+        .ls-bonus-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--ink);
+          color: var(--paper);
+          text-decoration: none;
+          font-family: 'Space Mono', 'Courier New', monospace;
+          font-weight: 900;
+          font-size: 11px;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          padding: 10px 14px;
+          border-radius: 3px;
+          white-space: nowrap;
+          box-shadow: 0 3px 0 rgba(11,31,58,0.35);
+        }
+        .ls-bonus-ended {
+          font-family: 'Space Mono', 'Courier New', monospace;
+          font-size: 11px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          font-weight: 900;
+          color: var(--stamp-red);
+        }
+        @media (max-width: 760px) {
+          .ls-bonus-box { grid-template-columns: 1fr; text-align: center; margin-top: -6px; }
+          .ls-bonus-count { width: 100%; min-width: 0; }
+        }
+        @media (max-width: 430px) {
+          .ls-bonus-box { padding: 14px; }
+          .ls-bonus-count { grid-template-columns: repeat(2, 1fr); }
+        }
       `}</style>
 
       <div className="ls-paper">
@@ -457,6 +590,29 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
           >
             {t.cta} <span className="ls-arrow">→</span>
           </a>
+        </div>
+
+        <div className="ls-bonus-box" aria-label="10% Bonus Offer">
+          <div className="ls-bonus-copy">
+            <span className="ls-bonus-eye">{t.bonusEyebrow}</span>
+            <h3 className="ls-bonus-title">{t.bonusTitle}</h3>
+            <p className="ls-bonus-sub">{t.bonusSub}</p>
+          </div>
+          <div className="ls-bonus-side">
+            {bonusLeft ? (
+              <div className="ls-bonus-count" role="timer" aria-live="polite">
+                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.d).padStart(2, "0")}</div><div className="ls-bonus-l">{t.d}</div></div>
+                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.h).padStart(2, "0")}</div><div className="ls-bonus-l">{t.h}</div></div>
+                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.m).padStart(2, "0")}</div><div className="ls-bonus-l">{t.m}</div></div>
+                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.s).padStart(2, "0")}</div><div className="ls-bonus-l">{t.s}</div></div>
+              </div>
+            ) : (
+              <span className="ls-bonus-ended">{t.bonusEnded}</span>
+            )}
+            <a className="ls-bonus-btn" href={CONFIG.presaleLink} target="_blank" rel="noopener noreferrer">
+              {t.bonusCta} →
+            </a>
+          </div>
         </div>
 
         <div className="ls-grid">
