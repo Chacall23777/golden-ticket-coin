@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { DogeJudgeChat } from "../components/DogeJudgeChat";
+import { FloatingWeb3Brasil } from "../components/FloatingWeb3Brasil";
 
 
 function NotFoundComponent() {
@@ -129,7 +129,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-      <DogeJudgeChat />
+      <FloatingWeb3Brasil />
     </QueryClientProvider>
   );
 }
