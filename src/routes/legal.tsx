@@ -737,13 +737,7 @@ function LegalPage() {
           <a href="#community">{t.navCommunity}</a>
           <Link to="/" className="nav-presale-link">{t.navPresale}</Link>
         </div>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <div className="lang-toggle">
-            <button className={lang === "pt" ? "active" : ""} onClick={() => setLang("pt")}>PT</button>
-            <button className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
-          </div>
-          <Link to="/" className="nav-cta">{t.navCta}</Link>
-        </div>
+        <Link to="/" className="nav-cta">{t.navCta}</Link>
       </nav>
 
       <section className="hero">
