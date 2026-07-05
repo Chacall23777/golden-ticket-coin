@@ -567,59 +567,6 @@ const tx: Record<Lang, Record<string, string>> = {
   },
 };
 
-const BONUS_END = Date.UTC(2026, 6, 10, 0, 0, 0); // July 10, 2026 00:00 UTC
-const PRESALE_LINK = "https://privatesale.multitoken.top/";
-
-function useCountdown(target: number) {
-  const [now, setNow] = useState<number | null>(null);
-  useEffect(() => {
-    setNow(Date.now());
-    const i = setInterval(() => setNow(Date.now()), 1000);
-    return () => clearInterval(i);
-  }, []);
-  const diff = Math.max(0, target - (now ?? target));
-  return {
-    ended: diff === 0,
-    d: Math.floor(diff / 86400000),
-    h: Math.floor((diff % 86400000) / 3600000),
-    m: Math.floor((diff % 3600000) / 60000),
-    s: Math.floor((diff % 60000) / 1000),
-  };
-}
-
-function BonusBanner({ t }: { t: Record<string, string> }) {
-  const c = useCountdown(BONUS_END);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  return (
-    <section className="bonus-band" aria-label="10% Bonus Offer">
-      <div className="bonus-inner reveal">
-        <div className="bonus-seal" aria-hidden="true">
-          <span className="b-num">{t.bonusBadge}</span>
-          <span className="b-lbl">{t.bonusBadgeLbl}</span>
-        </div>
-        <div className="bonus-copy">
-          <span className="b-eyebrow">{t.bonusEyebrow}</span>
-          <h3>{t.bonusTitle}<span>{t.bonusTitleHi}</span></h3>
-          <p>{t.bonusSub}</p>
-          {c.ended ? (
-            <span className="bonus-ended">{t.bonusEnded}</span>
-          ) : (
-            <div className="bonus-count" role="timer" aria-live="polite">
-              <div className="bonus-cell"><div className="n">{pad(c.d)}</div><div className="l">{t.dLabel}</div></div>
-              <div className="bonus-cell"><div className="n">{pad(c.h)}</div><div className="l">{t.hLabel}</div></div>
-              <div className="bonus-cell"><div className="n">{pad(c.m)}</div><div className="l">{t.mLabel}</div></div>
-              <div className="bonus-cell"><div className="n">{pad(c.s)}</div><div className="l">{t.sLabel}</div></div>
-            </div>
-          )}
-        </div>
-        <a className="bonus-cta" href={PRESALE_LINK} target="_blank" rel="noopener noreferrer">
-          {t.bonusBtn} →
-        </a>
-      </div>
-    </section>
-  );
-}
-
 function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
   return (
     <section className="w3b-band" aria-label="WEB3BRASIL Community Partner">
@@ -759,7 +706,7 @@ function LegalPage() {
         </div>
       </section>
 
-      <BonusBanner t={t} />
+      
 
       <HoldersSection />
 
