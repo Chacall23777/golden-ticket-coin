@@ -107,6 +107,25 @@ function HomePresale() {
               EN
             </button>
           </div>
+          <a
+            href="https://privatesale.multitoken.top/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "'IBM Plex Mono','Courier New',monospace",
+              fontSize: 12,
+              letterSpacing: 2,
+              textTransform: "uppercase" as const,
+              color: "#0A0A0F",
+              background: "#C9A84C",
+              padding: "8px 16px",
+              borderRadius: 2,
+              textDecoration: "none",
+              fontWeight: 700,
+            }}
+          >
+            {lang === "pt" ? "Compra e Retire" : "Buy and Claim"}
+          </a>
           <Link
             to="/legal"
             style={{
