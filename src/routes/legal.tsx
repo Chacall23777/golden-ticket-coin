@@ -625,7 +625,7 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
       <div className="w3b-card reveal">
         <a
           className="w3b-logo-wrap"
-          href="https://web3brasil.com.br"
+          href="https://web3brasil.life"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WEB3BRASIL"
@@ -636,7 +636,7 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
           <span className="w3b-eye">{t.w3bEyebrow}</span>
           <h3>{t.w3bTitle}<span>{t.w3bTitleHi}</span></h3>
           <p>{t.w3bSub}</p>
-          <a className="w3b-cta" href="https://web3brasil.com.br" target="_blank" rel="noopener noreferrer">
+          <a className="w3b-cta" href="https://web3brasil.life" target="_blank" rel="noopener noreferrer">
             {t.w3bBtn}
           </a>
         </div>
