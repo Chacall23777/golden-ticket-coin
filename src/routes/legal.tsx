@@ -764,7 +764,10 @@ function LegalPage() {
         </div>
       </section>
 
+      <BonusBanner t={t} />
+
       <HoldersSection />
+
 
       <section className="ticker-strip">
         <div className="track">
@@ -899,7 +902,10 @@ function LegalPage() {
         </div>
       </section>
 
+      <Web3BrasilBanner t={t} />
+
       <section id="pumpfun" className="pumpfun">
+
         <div className="section-head reveal">
           <span className="eyebrow">{t.pumpfunEyebrow}</span>
           <h2>{t.pumpfunH2}</h2>
