@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import PresaleSection from "@/components/PresaleSection";
+import BonusBanner from "@/components/BonusBanner";
 
 export const Route = createFileRoute("/")({
   head: () => ({
