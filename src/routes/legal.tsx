@@ -548,7 +548,22 @@ const tx: Record<Lang, Record<string, string>> = {
     buyChipSol: "Delivered on Solana",
     buyBtn: "Buy via Multitoken →",
     buyFine: "Processed by Multitoken · Solana Token Swap Platform",
+    bonusEyebrow: "Limited-time offer",
+    bonusTitle: "Get a ",
+    bonusTitleHi: "10% $LEGAL Bonus",
+    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 00:00 UTC.",
+    bonusBtn: "BUY $LEGAL NOW",
+    bonusEnded: "Bonus ended",
+    bonusBadge: "+10%",
+    bonusBadgeLbl: "Bonus",
+    dLabel: "Days", hLabel: "Hours", mLabel: "Min", sLabel: "Sec",
+    w3bEyebrow: "Official Community Partner",
+    w3bTitle: "Powered by ",
+    w3bTitleHi: "WEB3BRASIL",
+    w3bSub: "$LEGAL is backed by WEB3BRASIL — Brazil's leading community for Web3, DeFi and memecoins. Content, education and curation to help you enter crypto the right way.",
+    w3bBtn: "Visit WEB3BRASIL →",
   },
+
 };
 
 function LegalPage() {
