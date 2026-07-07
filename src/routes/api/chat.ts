@@ -46,7 +46,7 @@ Step 4: Paste the $LEGAL CA and swap SOL for $LEGAL
 ── OFFICIAL LINKS ──
 - Website: https://elonlegal.sale
 - X (Twitter): https://x.com/legal_elon
-- Telegram: https://t.me/+j9lyzSZ4p0FjNjMx
+- Telegram: https://t.me/elonlegal
 - CoinMarketCap Community: https://coinmarketcap.com/community/profile/legal_
 - DexScreener: coming soon
 - Solscan: https://solscan.io/token/XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL
