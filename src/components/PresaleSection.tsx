@@ -25,7 +25,7 @@ const CONFIG = {
   adminKey: "legal2026",
 };
 
-const BONUS_END_MS = Date.UTC(2026, 6, 10, 0, 0, 0);
+const BONUS_END_MS = Date.UTC(2026, 6, 10, 6, 0, 0);
 
 type Lang = "pt" | "en";
 type TimeLeft = { d: number; h: number; m: number; s: number } | null;
@@ -52,7 +52,7 @@ const T: Record<Lang, Record<string, string>> = {
     waiting: "Cronômetro aguardando início",
     bonusEyebrow: "+10% Bônus",
     bonusTitle: "Oferta por tempo limitado",
-    bonusSub: "Compre agora na pré-venda e receba +10% de tokens extras. Termina em 10 de julho de 2026, 00:00 UTC.",
+    bonusSub: "Compre agora na pré-venda e receba +10% de tokens extras. Termina em 10 de julho de 2026, 06:00 UTC.",
     bonusCta: "Comprar $LEGAL agora",
     bonusEnded: "Bônus encerrado",
   },
@@ -77,7 +77,7 @@ const T: Record<Lang, Record<string, string>> = {
     waiting: "Countdown waiting to start",
     bonusEyebrow: "+10% Bonus",
     bonusTitle: "Limited-time offer",
-    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 00:00 UTC.",
+    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 06:00 UTC.",
     bonusCta: "Buy $LEGAL now",
     bonusEnded: "Bonus ended",
   },
