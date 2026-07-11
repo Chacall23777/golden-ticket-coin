@@ -585,7 +585,7 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
         )}
 
         <div className="ls-cta-wrap">
-          
+          <
             className="ls-cta"
             href={CONFIG.presaleLink}
             target="_blank"
