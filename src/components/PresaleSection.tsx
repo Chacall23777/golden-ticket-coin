@@ -19,6 +19,8 @@ const CONFIG = {
   active: true,
   durationDays: 15,
   presaleLink: "https://privatesale.multitoken.top/",
+  raffleLink: "https://rafflelegal.multitoken.top/",
+  raffleRulesLink: "https://rafflelegal.multitoken.top/#regras-oficiais",
   presalePrice: "0,00000475",
   initialMarketCap: "50.000",
   supportedBy: "Web3 Brasil",
@@ -50,11 +52,12 @@ const T: Record<Lang, Record<string, string>> = {
     adminStarting: "Iniciando...",
     adminRunning: "✓ Pré-venda em andamento (iniciada por você)",
     waiting: "Cronômetro aguardando início",
-    bonusEyebrow: "+10% Bônus",
-    bonusTitle: "Oferta por tempo limitado",
-    bonusSub: "Compre agora na pré-venda e receba +10% de tokens extras. Termina em 10 de julho de 2026, 06:00 UTC.",
-    bonusCta: "Comprar $LEGAL agora",
-    bonusEnded: "Bônus encerrado",
+    bonusEyebrow: "LEGAL RAFFLE",
+    bonusTitle: "🏆 COMPETIÇÃO OFICIAL DA PRÉ-VENDA $LEGAL",
+    bonusSub: "Processo Nº LE-2026-002",
+    bonusCta: "Ver requisitos de entrada",
+    bonusEnded: "Sorteio encerrado",
+    raffleProgress: "30 / 30 Compras Qualificadas",
   },
   en: {
     header: "Official Entry Document",
@@ -75,11 +78,12 @@ const T: Record<Lang, Record<string, string>> = {
     adminStarting: "Starting...",
     adminRunning: "✓ Presale running (started by you)",
     waiting: "Countdown waiting to start",
-    bonusEyebrow: "+10% Bonus",
-    bonusTitle: "Limited-time offer",
-    bonusSub: "Buy now in the presale and receive +10% extra tokens. Ends July 10, 2026 at 06:00 UTC.",
-    bonusCta: "Buy $LEGAL now",
-    bonusEnded: "Bonus ended",
+    bonusEyebrow: "LEGAL RAFFLE",
+    bonusTitle: "🏆 OFFICIAL $LEGAL PRESALE COMPETITION",
+    bonusSub: "Case Nº LE-2026-002",
+    bonusCta: "See entry requirements",
+    bonusEnded: "Raffle closed",
+    raffleProgress: "30 / 30 Qualified Purchases",
   },
 };
 
@@ -174,7 +178,6 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
     timeLeft = getTimeLeft(end);
     ended = !timeLeft;
   }
-  const bonusLeft = getTimeLeftFrom(BONUS_END_MS, now);
 
   return (
     <section className="ls-section">
@@ -582,7 +585,7 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
         )}
 
         <div className="ls-cta-wrap">
-          <a
+          
             className="ls-cta"
             href={CONFIG.presaleLink}
             target="_blank"
@@ -592,25 +595,22 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
           </a>
         </div>
 
-        <div className="ls-bonus-box" aria-label="10% Bonus Offer">
+        <div className="ls-bonus-box" aria-label="$LEGAL Raffle">
           <div className="ls-bonus-copy">
             <span className="ls-bonus-eye">{t.bonusEyebrow}</span>
-            <h3 className="ls-bonus-title">{t.bonusTitle}</h3>
-            <p className="ls-bonus-sub">{t.bonusSub}</p>
+            <p className="ls-bonus-sub" style={{ marginBottom: 4 }}>{t.bonusSub}</p>
+            <h3 className="ls-bonus-title">
+              <a href={CONFIG.raffleRulesLink} target="_blank" rel="noopener noreferrer" style={{ color: "inherit", textDecoration: "none" }}>
+                {t.bonusTitle}
+              </a>
+            </h3>
+            <a href={CONFIG.raffleRulesLink} target="_blank" rel="noopener noreferrer" className="ls-bonus-sub" style={{ display: "block", textDecoration: "none" }}>
+              {t.raffleProgress}
+            </a>
           </div>
           <div className="ls-bonus-side">
-            {bonusLeft ? (
-              <div className="ls-bonus-count" role="timer" aria-live="polite">
-                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.d).padStart(2, "0")}</div><div className="ls-bonus-l">{t.d}</div></div>
-                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.h).padStart(2, "0")}</div><div className="ls-bonus-l">{t.h}</div></div>
-                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.m).padStart(2, "0")}</div><div className="ls-bonus-l">{t.m}</div></div>
-                <div className="ls-bonus-cell"><div className="ls-bonus-n">{String(bonusLeft.s).padStart(2, "0")}</div><div className="ls-bonus-l">{t.s}</div></div>
-              </div>
-            ) : (
-              <span className="ls-bonus-ended">{t.bonusEnded}</span>
-            )}
-            <a className="ls-bonus-btn" href={CONFIG.presaleLink} target="_blank" rel="noopener noreferrer">
-              {t.bonusCta} →
+            <a className="ls-bonus-btn" href={CONFIG.raffleLink} target="_blank" rel="noopener noreferrer">
+              {t.bonusCta} ↓
             </a>
           </div>
         </div>
@@ -644,3 +644,4 @@ export default function PresaleSection({ lang = "pt" }: { lang?: Lang } = {}) {
     </section>
   );
 }
+
