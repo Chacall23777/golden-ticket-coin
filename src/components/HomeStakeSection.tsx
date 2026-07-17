@@ -12,7 +12,7 @@ const T = {
     benefits: [
       { icon: TrendingUp, text: "8% ao mês de rendimento" },
       { icon: Clock, text: "Rende diariamente após 24 horas de carência" },
-      { icon: Unlock, text: "Saque quando quiser com apenas 1% de taxa" },
+      { icon: Unlock, text: "Saque quando quiser com apenas 3% de taxa" },
     ],
     badge: "Aprovado 100% Legal",
     cta: "ACESSAR STAKING OFICIAL",
@@ -25,7 +25,7 @@ const T = {
     benefits: [
       { icon: TrendingUp, text: "8% monthly yield" },
       { icon: Clock, text: "Daily rewards after a 24-hour grace period" },
-      { icon: Unlock, text: "Withdraw anytime with only a 1% fee" },
+      { icon: Unlock, text: "Withdraw anytime with only a 3% fee" },
     ],
     badge: "100% Legal Approved",
     cta: "ACCESS OFFICIAL STAKING",
