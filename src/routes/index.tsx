@@ -140,6 +140,20 @@ function HomePresale() {
           >
             {aboutLabel}
           </Link>
+          <Link
+            to="/stake"
+            style={{
+              fontFamily: "'IBM Plex Mono','Courier New',monospace",
+              fontSize: 12,
+              letterSpacing: 2,
+              textTransform: "uppercase" as const,
+              color: "#C9A84C",
+              opacity: 0.85,
+              textDecoration: "none",
+            }}
+          >
+            {lang === "pt" ? "Staking" : "Staking"}
+          </Link>
         </div>
       </nav>
       <div style={{ paddingTop: 60 }}>
