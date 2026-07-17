@@ -34,10 +34,7 @@ const T = {
       },
     ],
     cta: "ACESSAR STAKING OFICIAL",
-    ctaSub: "Você será redirecionado para a plataforma oficial de staking.",
-    walletTitle: "Acompanhe sua carteira",
-    walletLabel: "SUA CARTEIRA SOLANA",
-    walletPlaceholder: "Ex: 3ZjVWq...mCwKuR",
+    ctaSub: "Você será redirecionado para a plataforma oficial de staking em uma nova aba.",
     footer: "Staking sujeito aos termos oficiais da plataforma. Rentabilidade passada não garante ganhos futuros.",
   },
   en: {
@@ -70,10 +67,7 @@ const T = {
       },
     ],
     cta: "ACCESS OFFICIAL STAKING",
-    ctaSub: "You will be redirected to the official staking platform.",
-    walletTitle: "Track your wallet",
-    walletLabel: "YOUR SOLANA WALLET",
-    walletPlaceholder: "Ex: 3ZjVWq...mCwKuR",
+    ctaSub: "You will be redirected to the official staking platform in a new tab.",
     footer: "Staking is subject to the platform's official terms. Past performance does not guarantee future returns.",
   },
 };
@@ -83,28 +77,48 @@ export default function StakeSection() {
   const t = T[lang];
 
   return (
-    <div className="min-h-screen text-[#F5F0E8]" style={{ background: "#0A0A0F" }}>
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden">
+    <div className="min-h-screen text-[#F5F0E8] overflow-hidden" style={{ background: "#0A0A0F" }}>
+      <style>{`
+        @keyframes glowPulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4), 0 0 40px rgba(201,168,76,0.3); }
+          50% { box-shadow: 0 0 0 8px rgba(201,168,76,0), 0 0 80px rgba(201,168,76,0.6); }
+        }
+        @keyframes textFlicker {
+          0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(201,168,76,0.4); }
+          50% { opacity: 0.92; text-shadow: 0 0 40px rgba(201,168,76,0.8); }
+        }
+        @keyframes borderRun {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+
+      <section className="relative pt-28 pb-16 px-6">
         <div
-          className="absolute inset-0 opacity-20 pointer-events-none"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(circle at 50% 0%, #C9A84C 0%, transparent 55%)",
+            background: "radial-gradient(circle at 50% 0%, rgba(201,168,76,0.22), transparent 55%)",
           }}
         />
         <div className="relative max-w-5xl mx-auto text-center">
           <div
-            className="inline-block px-6 py-2 border border-[#C9A84C] text-[#C9A84C] text-sm tracking-[0.2em] mb-6"
+            className="inline-block px-6 py-2 border border-[#C9A84C] text-[#C9A84C] text-sm tracking-[0.2em] mb-8"
             style={{ fontFamily: "'IBM Plex Mono','Courier New',monospace" }}
           >
             {t.process}
           </div>
           <h1
-            className="text-6xl md:text-8xl font-bold mb-6 leading-tight"
-            style={{ fontFamily: "'Special Elite','Courier Prime','Courier New',monospace" }}
+            className="text-7xl md:text-9xl font-bold mb-6 leading-[0.95]"
+            style={{
+              fontFamily: "'Special Elite','Courier Prime','Courier New',monospace",
+              animation: "textFlicker 2s ease-in-out infinite",
+              color: "#F5F0E8",
+            }}
           >
             {t.title}
           </h1>
-          <p className="text-2xl md:text-3xl text-[#C9A84C] font-light tracking-wide">
+          <p className="text-2xl md:text-4xl text-[#C9A84C] font-light tracking-wide">
             {t.subtitle}
           </p>
         </div>
@@ -113,22 +127,22 @@ export default function StakeSection() {
       <section className="px-6 pb-24">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <p
-            className="text-3xl md:text-4xl text-[#F5F0E8] leading-relaxed"
+            className="text-4xl md:text-5xl text-[#F5F0E8] leading-relaxed"
             style={{ fontFamily: "'Special Elite','Courier Prime','Courier New',monospace" }}
           >
             {t.introHighlight}
           </p>
-          <p className="text-lg md:text-xl text-[#F5F0E8]/80 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-2xl text-[#F5F0E8]/80 leading-relaxed max-w-3xl mx-auto">
             {t.intro}
           </p>
-          <div className="w-24 h-px bg-[#C9A84C]/50 mx-auto" />
+          <div className="w-32 h-px bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto" />
         </div>
       </section>
 
       <section className="px-6 pb-28">
         <div className="max-w-6xl mx-auto">
           <h2
-            className="text-center text-3xl md:text-4xl font-bold mb-16 text-[#F5F0E8]"
+            className="text-center text-3xl md:text-5xl font-bold mb-16 text-[#F5F0E8]"
             style={{ fontFamily: "'Special Elite','Courier Prime','Courier New',monospace" }}
           >
             {t.benefitsTitle}
@@ -137,7 +151,7 @@ export default function StakeSection() {
             {t.benefits.map((b, i) => (
               <div
                 key={i}
-                className="group relative bg-[#1A1A1F] border border-[#C9A84C]/30 rounded-2xl p-8 md:p-10 transition-all hover:border-[#C9A84C]/70 hover:bg-[#1A1A1F]/80"
+                className="group relative bg-[#1A1A1F] border border-[#C9A84C]/30 rounded-2xl p-8 md:p-10 transition-all hover:border-[#C9A84C] hover:bg-[#14141A]"
               >
                 <div className="flex items-start gap-6">
                   <div className="shrink-0 w-14 h-14 rounded-xl bg-[#C9A84C]/10 border border-[#C9A84C]/40 flex items-center justify-center text-[#C9A84C]">
@@ -159,7 +173,24 @@ export default function StakeSection() {
       </section>
 
       <section className="px-6 pb-28">
-        <div className="max-w-3xl mx-auto bg-[#1A1A1F] border border-[#C9A84C]/30 rounded-2xl p-10 md:p-14 text-center space-y-8">
+        <div className="max-w-3xl mx-auto rounded-2xl p-10 md:p-16 text-center space-y-8"
+          style={{
+            background: "linear-gradient(135deg, #1A1A1F 0%, #0F0F14 100%)",
+            border: "2px solid transparent",
+            backgroundClip: "padding-box",
+            position: "relative",
+          }}
+        >
+          <div
+            className="absolute inset-0 rounded-2xl pointer-events-none"
+            style={{
+              background: "linear-gradient(90deg, #C9A84C, #F5F0E8, #C9A84C, #1A6B3A, #C9A84C)",
+              backgroundSize: "300% 300%",
+              animation: "borderRun 4s ease infinite",
+              zIndex: -1,
+              margin: -2,
+            }}
+          />
           <div className="space-y-4">
             <h2
               className="text-3xl md:text-5xl font-bold text-[#C9A84C]"
@@ -167,41 +198,21 @@ export default function StakeSection() {
             >
               {t.cta}
             </h2>
-            <p className="text-[#F5F0E8]/70 text-lg">{t.ctaSub}</p>
+            <p className="text-[#F5F0E8]/70 text-lg md:text-xl">{t.ctaSub}</p>
           </div>
           <a
             href={STAKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block w-full md:w-auto bg-[#C9A84C] hover:bg-[#d4b46a] text-[#0A0A0F] font-bold py-6 px-12 rounded-xl text-xl md:text-2xl text-center transition-all"
-            style={{ fontFamily: "'IBM Plex Mono','Courier New',monospace", letterSpacing: 2 }}
+            className="inline-block w-full md:w-auto bg-[#C9A84C] hover:bg-[#d4b46a] text-[#0A0A0F] font-bold py-7 px-14 rounded-xl text-xl md:text-3xl text-center transition-all"
+            style={{
+              fontFamily: "'IBM Plex Mono','Courier New',monospace",
+              letterSpacing: 2,
+              animation: "glowPulse 1.6s ease-in-out infinite",
+            }}
           >
             {t.cta}
           </a>
-        </div>
-      </section>
-
-      <section className="px-6 pb-20">
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-[#0F0F14] border border-[#C9A84C]/20 rounded-2xl p-8 md:p-10">
-            <h3
-              className="text-xl md:text-2xl font-bold text-[#C9A84C] mb-6"
-              style={{ fontFamily: "'Special Elite','Courier Prime','Courier New',monospace" }}
-            >
-              {t.walletTitle}
-            </h3>
-            <label
-              className="block text-sm tracking-[0.2em] mb-3 text-[#F5F0E8]/70"
-              style={{ fontFamily: "'IBM Plex Mono','Courier New',monospace" }}
-            >
-              {t.walletLabel}
-            </label>
-            <input
-              type="text"
-              placeholder={t.walletPlaceholder}
-              className="w-full bg-black/70 border border-[#C9A84C]/50 rounded-xl px-6 py-5 text-lg font-mono focus:outline-none focus:border-[#C9A84C]"
-            />
-          </div>
         </div>
       </section>
 
