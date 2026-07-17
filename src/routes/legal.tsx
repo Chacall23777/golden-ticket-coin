@@ -13,6 +13,7 @@ import memeDogeRally from "@/assets/meme-doge-rally.jpg";
 import memeElonLegal from "@/assets/meme-elon-legal.jpg";
 import multitokenBuy from "@/assets/multitoken-buy.jpg";
 import web3brasilLogo from "@/assets/web3brasil-logo.png";
+import dogeOfficer from "@/assets/doge-officer.png";
 import { HoldersSection } from "@/components/HoldersSection";
 import { useLang } from "@/hooks/useLang";
 
@@ -325,6 +326,16 @@ const tx: Record<Lang, Record<string, string>> = {
     navCommunity: "Comunidade",
     navCta: "Comprar $LEGAL",
     navPresale: "Pré-venda →",
+    navStaking: "Staking",
+    stakeEyebrow: "STAKE OFICIAL $LEGAL",
+    stakeTitle: "Solana · Entrada 100% Legal",
+    stakeLead: "A porta certa sempre abre.\n$LEGAL nasceu de uma ideia simples: o caminho certo deveria ser o caminho fácil. Sem atalho, sem burocracia escondida, sem letra miúda — só um carimbo de aprovado e seguir em frente.",
+    stakeBenefit1: "8% ao mês de rendimento",
+    stakeBenefit2: "Rende diariamente após 24 horas de carência",
+    stakeBenefit3: "Saque quando quiser com apenas 1% de taxa",
+    stakeBadge: "Aprovado 100% Legal",
+    stakeCta: "ACESSAR STAKING OFICIAL",
+    stakeCtaSub: "Abre em nova aba para a plataforma oficial de staking.",
     heroEyebrow: "Solana · entrada 100% legal",
     heroH1a: "A porta certa ",
     heroH1b: "sempre abre.",
@@ -450,6 +461,16 @@ const tx: Record<Lang, Record<string, string>> = {
     navCommunity: "Community",
     navCta: "Buy $LEGAL",
     navPresale: "Presale →",
+    navStaking: "Staking",
+    stakeEyebrow: "OFFICIAL $LEGAL STAKE",
+    stakeTitle: "Solana · 100% Legal Entry",
+    stakeLead: "The right door is always open.\n$LEGAL was born from a simple idea: the right path should be the easy path. No shortcuts, no hidden bureaucracy, no fine print — just an approved stamp and move forward.",
+    stakeBenefit1: "8% monthly yield",
+    stakeBenefit2: "Daily rewards after a 24-hour grace period",
+    stakeBenefit3: "Withdraw anytime with only a 1% fee",
+    stakeBadge: "100% Legal Approved",
+    stakeCta: "ACCESS OFFICIAL STAKING",
+    stakeCtaSub: "Opens in a new tab on the official staking platform.",
     heroEyebrow: "Solana · 100% legal entry",
     heroH1a: "The right door ",
     heroH1b: "always opens.",
