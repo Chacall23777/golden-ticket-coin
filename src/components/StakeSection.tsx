@@ -25,7 +25,7 @@ const T = {
       {
         icon: Unlock,
         label: "Saque quando quiser",
-        desc: "Liquidez sob demanda com apenas 3% de taxa de saída.",
+        desc: "Liquidez sob demanda com apenas 1% de taxa de saída.",
       },
       {
         icon: Layers,
@@ -58,7 +58,7 @@ const T = {
       {
         icon: Unlock,
         label: "Withdraw anytime",
-        desc: "On-demand liquidity with only a 3% exit fee.",
+        desc: "On-demand liquidity with only a 1% exit fee.",
       },
       {
         icon: Layers,
