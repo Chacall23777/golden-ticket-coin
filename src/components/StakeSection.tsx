@@ -201,19 +201,29 @@ export default function StakeSection() {
             </h2>
             <p className="text-[#F5F0E8]/70 text-lg md:text-xl">{t.ctaSub}</p>
           </div>
-          <a
-            href={STAKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block w-full md:w-auto bg-[#C9A84C] hover:bg-[#d4b46a] text-[#0A0A0F] font-bold py-7 px-14 rounded-xl text-xl md:text-3xl text-center transition-all"
-            style={{
-              fontFamily: "'IBM Plex Mono','Courier New',monospace",
-              letterSpacing: 2,
-              animation: "glowPulse 1.6s ease-in-out infinite",
-            }}
-          >
-            {t.cta}
-          </a>
+          <div className="flex flex-col items-center gap-6">
+            <img
+              src={shibaPointer}
+              alt="Shiba Inu apontando para o staking oficial"
+              loading="lazy"
+              width={260}
+              height={260}
+              className="w-48 md:w-64 h-auto object-contain drop-shadow-[0_0_24px_rgba(201,168,76,0.5)] animate-bounce"
+            />
+            <a
+              href={STAKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block w-full md:w-auto bg-[#C9A84C] hover:bg-[#d4b46a] text-[#0A0A0F] font-bold py-7 px-14 rounded-xl text-xl md:text-3xl text-center transition-all"
+              style={{
+                fontFamily: "'IBM Plex Mono','Courier New',monospace",
+                letterSpacing: 2,
+                animation: "glowPulse 1.6s ease-in-out infinite",
+              }}
+            >
+              {t.cta}
+            </a>
+          </div>
         </div>
       </section>
 
