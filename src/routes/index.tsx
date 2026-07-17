@@ -38,6 +38,12 @@ function HomePresale() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#0A0A0F" }}>
+      <style>{`
+        @keyframes pulseGold {
+          0%, 100% { box-shadow: 0 0 0 2px #C9A84C, 0 0 20px rgba(201,168,76,0.55); }
+          50% { box-shadow: 0 0 0 3px #C9A84C, 0 0 40px rgba(201,168,76,0.85); }
+        }
+      `}</style>
       <nav
         style={{
           position: "fixed",
