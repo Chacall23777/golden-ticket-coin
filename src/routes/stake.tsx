@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useLang } from "@/hooks/useLang";
 import StakeSection from "@/components/StakeSection";
 
 export const Route = createFileRoute("/stake")({
@@ -13,10 +12,9 @@ export const Route = createFileRoute("/stake")({
 });
 
 function StakePage() {
-  const [lang] = useLang();
   return (
     <div style={{ minHeight: "100vh", background: "#0A0A0F" }}>
-      <StakeSection lang={lang} />
+      <StakeSection />
     </div>
   );
 }
