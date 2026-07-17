@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import PresaleSection from "@/components/PresaleSection";
+import HomeStakeSection from "@/components/HomeStakeSection";
 import { useLang } from "@/hooks/useLang";
 
 export const Route = createFileRoute("/")({
@@ -158,6 +159,7 @@ function HomePresale() {
       </nav>
       <div style={{ paddingTop: 60 }}>
         <PresaleSection lang={lang} />
+        <HomeStakeSection />
       </div>
     </div>
   );
