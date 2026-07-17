@@ -44,11 +44,11 @@ function HomePresale() {
           50% { box-shadow: 0 0 0 3px #C9A84C, 0 0 40px rgba(201,168,76,0.85); }
         }
         @keyframes rainbowPulse {
-          0% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
-          25% { background: #1A6B3A; box-shadow: 0 0 0 2px #1A6B3A, 0 0 25px rgba(26,107,58,0.7); }
-          50% { background: #8B1A1A; box-shadow: 0 0 0 2px #8B1A1A, 0 0 25px rgba(139,26,26,0.7); }
-          75% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
-          100% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
+          0% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); transform: scale(1); }
+          25% { background: #1A6B3A; box-shadow: 0 0 0 2px #1A6B3A, 0 0 25px rgba(26,107,58,0.7); transform: scale(1.05); }
+          50% { background: #8B1A1A; box-shadow: 0 0 0 2px #8B1A1A, 0 0 25px rgba(139,26,26,0.7); transform: scale(1.05); }
+          75% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); transform: scale(1); }
+          100% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); transform: scale(1); }
         }
       `}</style>
       <nav
