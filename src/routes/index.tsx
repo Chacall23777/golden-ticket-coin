@@ -43,6 +43,13 @@ function HomePresale() {
           0%, 100% { box-shadow: 0 0 0 2px #C9A84C, 0 0 20px rgba(201,168,76,0.55); }
           50% { box-shadow: 0 0 0 3px #C9A84C, 0 0 40px rgba(201,168,76,0.85); }
         }
+        @keyframes rainbowPulse {
+          0% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
+          25% { background: #1A6B3A; box-shadow: 0 0 0 2px #1A6B3A, 0 0 25px rgba(26,107,58,0.7); }
+          50% { background: #8B1A1A; box-shadow: 0 0 0 2px #8B1A1A, 0 0 25px rgba(139,26,26,0.7); }
+          75% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
+          100% { background: #C9A84C; box-shadow: 0 0 0 2px #C9A84C, 0 0 15px rgba(201,168,76,0.5); }
+        }
       `}</style>
       <nav
         style={{
@@ -136,12 +143,17 @@ function HomePresale() {
             to="/legal"
             style={{
               fontFamily: "'IBM Plex Mono','Courier New',monospace",
-              fontSize: 12,
+              fontSize: 13,
               letterSpacing: 2,
               textTransform: "uppercase" as const,
-              color: "#C9A84C",
-              opacity: 0.85,
+              color: "#0A0A0F",
+              background: "#C9A84C",
+              padding: "8px 16px",
+              borderRadius: 2,
               textDecoration: "none",
+              fontWeight: 700,
+              animation: "rainbowPulse 1.2s ease-in-out infinite",
+              boxShadow: "0 0 0 2px #C9A84C",
             }}
           >
             {aboutLabel}
