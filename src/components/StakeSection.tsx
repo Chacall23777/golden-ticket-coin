@@ -1,5 +1,6 @@
 import { useLang } from "@/hooks/useLang";
 import { TrendingUp, Clock, Unlock, Layers } from "lucide-react";
+import shibaPointer from "@/assets/shiba-pointer.png";
 
 const STAKING_URL = "https://legalstake.multitoken.top/";
 
