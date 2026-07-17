@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import PresaleSection from "@/components/PresaleSection";
-import HomeStakeSection from "@/components/HomeStakeSection";
 import { useLang } from "@/hooks/useLang";
 
 export const Route = createFileRoute("/")({
@@ -39,6 +38,12 @@ function HomePresale() {
 
   return (
     <div style={{ minHeight: "100vh", background: "#0A0A0F" }}>
+      <style>{`
+        @keyframes pulseGold {
+          0%, 100% { box-shadow: 0 0 0 2px #C9A84C, 0 0 20px rgba(201,168,76,0.55); }
+          50% { box-shadow: 0 0 0 3px #C9A84C, 0 0 40px rgba(201,168,76,0.85); }
+        }
+      `}</style>
       <nav
         style={{
           position: "fixed",
@@ -145,12 +150,17 @@ function HomePresale() {
             to="/stake"
             style={{
               fontFamily: "'IBM Plex Mono','Courier New',monospace",
-              fontSize: 12,
+              fontSize: 13,
               letterSpacing: 2,
               textTransform: "uppercase" as const,
-              color: "#C9A84C",
-              opacity: 0.85,
+              color: "#0A0A0F",
+              background: "#C9A84C",
+              padding: "8px 16px",
+              borderRadius: 2,
               textDecoration: "none",
+              fontWeight: 700,
+              boxShadow: "0 0 0 2px #C9A84C, 0 0 20px rgba(201,168,76,0.55)",
+              animation: "pulseGold 1.6s ease-in-out infinite",
             }}
           >
             {lang === "pt" ? "Staking" : "Staking"}
@@ -159,7 +169,6 @@ function HomePresale() {
       </nav>
       <div style={{ paddingTop: 60 }}>
         <PresaleSection lang={lang} />
-        <HomeStakeSection />
       </div>
     </div>
   );
