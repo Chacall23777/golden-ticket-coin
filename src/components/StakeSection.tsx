@@ -2,24 +2,28 @@ import { useState } from "react";
 
 type Lang = "pt" | "en";
 
+const STAKING_URL = "https://legalstake.multitoken.top/";
+
 const T = {
   pt: {
     title: "STAKE $LEGAL",
-    subtitle: "Entrada 100% Legal • Rendimento Oficial",
+    subtitle: "Entrada 100% Legal • Rendimento Diário",
     apy: "8% ao mês",
     daily: "Rende diariamente após 24h",
     taxa: "Taxa de saída de apenas 1%",
-    btnConnect: "Conectar Carteira Solana",
-    btnStake: "Fazer Stake",
+    walletLabel: "SUA CARTEIRA SOLANA",
+    walletPlaceholder: "Ex: 3ZjVWq...mCwKuR",
+    cta: "Acessar Staking Oficial",
   },
   en: {
     title: "STAKE $LEGAL",
-    subtitle: "100% Legal Entry • Official Yield",
+    subtitle: "100% Legal Entry • Daily Yield",
     apy: "8% per month",
     daily: "Daily rewards after 24h",
     taxa: "Only 1% exit fee",
-    btnConnect: "Connect Solana Wallet",
-    btnStake: "Stake Now",
+    walletLabel: "YOUR SOLANA WALLET",
+    walletPlaceholder: "Ex: 3ZjVWq...mCwKuR",
+    cta: "Access Official Staking",
   },
 };
 
@@ -56,23 +60,24 @@ export default function StakeSection({ lang = "pt" }: { lang?: Lang }) {
 
           <div className="space-y-8">
             <div>
-              <label className="block text-sm tracking-widest mb-3">SUA CARTEIRA SOLANA</label>
+              <label className="block text-sm tracking-widest mb-3">{t.walletLabel}</label>
               <input
                 type="text"
-                placeholder="Ex: 3ZjVWq...mCwKuR"
+                placeholder={t.walletPlaceholder}
                 className="w-full bg-black/70 border border-[#C9A84C]/50 rounded-xl px-6 py-5 text-lg font-mono focus:outline-none focus:border-[#C9A84C]"
                 value={wallet}
                 onChange={(e) => setWallet(e.target.value)}
               />
             </div>
 
-            <button className="w-full bg-[#C9A84C] hover:bg-[#d4b46a] text-black font-bold py-5 rounded-xl text-lg transition-all">
-              {t.btnConnect}
-            </button>
-
-            <button className="w-full border border-[#C9A84C] hover:bg-white/10 font-bold py-5 rounded-xl text-lg transition-all">
-              {t.btnStake}
-            </button>
+            <a
+              href={STAKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full bg-[#C9A84C] hover:bg-[#d4b46a] text-black font-bold py-5 rounded-xl text-lg text-center transition-all"
+            >
+              {t.cta}
+            </a>
           </div>
         </div>
       </div>
