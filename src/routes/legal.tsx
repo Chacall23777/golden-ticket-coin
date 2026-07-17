@@ -96,6 +96,28 @@ nav.legal-nav{position:fixed; top:0; left:0; right:0; z-index:50; display:flex; 
 .btn-secondary{background:transparent; color:var(--paper); padding:16px 30px; border-radius:2px; font-family:var(--serif); font-weight:400; letter-spacing:2px; text-transform:uppercase; font-size:13px; border:1px solid rgba(245,240,232,0.4); display:inline-block;}
 .btn-secondary:hover{border-color:var(--gold); color:var(--gold);}
 
+/* --- stake hero --- */
+.stake-hero{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:140px 5vw 70px !important;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.14), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, #0d0d18 100%);
+  border-bottom:1px solid rgba(201,168,76,0.18);}
+.stake-hero-grid{max-width:1200px; width:100%; display:grid; grid-template-columns:1.1fr 1fr; gap:50px; align-items:center; position:relative; z-index:2;}
+@media (max-width:880px){ .stake-hero-grid{grid-template-columns:1fr; text-align:center; gap:40px;} }
+.stake-hero-text{display:flex; flex-direction:column; gap:22px; align-items:flex-start;}
+@media (max-width:880px){ .stake-hero-text{align-items:center;} }
+.stake-hero h2{font-family:var(--serif); font-weight:400; font-size:clamp(36px,5.5vw,64px); line-height:1.05; letter-spacing:-0.5px; color:var(--paper); text-shadow:2px 2px 0 rgba(0,0,0,0.5);}
+.stake-hero .stake-lead-first{font-family:var(--serif); font-size:clamp(22px,3vw,34px); line-height:1.3; color:var(--gold); max-width:520px;}
+.stake-hero .stake-lead-second{font-size:17px; line-height:1.7; color:var(--muted); max-width:520px; font-family:var(--sans);}
+.stake-benefits{list-style:none; padding:0; margin:8px 0 12px; display:flex; flex-direction:column; gap:12px; max-width:520px;}
+.stake-benefits li{position:relative; padding-left:28px; font-size:16px; line-height:1.5; color:var(--text); font-family:var(--sans);}
+.stake-benefits li::before{content:"◆"; position:absolute; left:0; color:var(--gold); font-size:14px;}
+.btn-stake{background:var(--gold); color:var(--bg); padding:20px 36px; border-radius:2px; font-family:var(--serif); font-weight:700; letter-spacing:2px; text-transform:uppercase; font-size:14px; border:1px solid var(--gold); display:inline-block; cursor:pointer; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.3), 0 6px 0 var(--gold-deep); transition:transform .15s, box-shadow .15s; margin-top:8px;}
+.btn-stake:hover{transform:translateY(4px) rotate(-2deg); box-shadow:inset 0 0 0 1px rgba(0,0,0,0.3), 0 2px 0 var(--gold-deep);}
+.stake-cta-sub{font-size:13px; color:var(--muted); margin-top:6px; font-family:var(--sans);}
+.stake-hero-art{position:relative; display:flex; justify-content:center; align-items:center;}
+.stake-hero-art img{width:100%; max-width:460px; border-radius:4px; border:6px solid var(--paper); box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.3); animation:float 6s ease-in-out infinite; transform:rotate(-2deg);}
+
 .hero-art{position:relative; display:flex; justify-content:center; align-items:center;}
 .hero-art img{width:100%; max-width:460px; border-radius:4px; border:6px solid var(--paper); box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.3); animation:float 6s ease-in-out infinite; transform:rotate(-2deg);}
 @keyframes float{0%,100%{transform:translateY(0px) rotate(-2deg);}50%{transform:translateY(-14px) rotate(1.5deg);}}
@@ -699,6 +721,7 @@ function LegalPage() {
           LEGAL
         </div>
         <div className="nav-links">
+          <a href="#stake">{t.navStaking}</a>
           <a href="#historia">{t.navStory}</a>
           <a href="#howto">{t.navHowto}</a>
           <a href="#tokenomics">{t.navTokenomics}</a>
@@ -726,6 +749,43 @@ function LegalPage() {
         </div>
         <Link to="/" className="nav-cta">{t.navCta}</Link>
       </nav>
+
+      <section id="stake" className="stake-hero">
+        <div className="stake-hero-grid">
+          <div className="stake-hero-text">
+            <span className="eyebrow">{t.stakeEyebrow}</span>
+            <h2>{t.stakeTitle}</h2>
+            {t.stakeLead.split("\n").map((line, i) => (
+              <p key={i} className={i === 0 ? "stake-lead-first" : "stake-lead-second"}>
+                {line}
+              </p>
+            ))}
+            <ul className="stake-benefits">
+              <li>{t.stakeBenefit1}</li>
+              <li>{t.stakeBenefit2}</li>
+              <li>{t.stakeBenefit3}</li>
+            </ul>
+            <a
+              className="btn-stake"
+              href="https://legalstake.multitoken.top/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t.stakeCta}
+            </a>
+            <p className="stake-cta-sub">{t.stakeCtaSub}</p>
+          </div>
+          <div className="stake-hero-art">
+            <div className="floating-stamp s1">{t.stakeBadge}</div>
+            <img
+              src={dogeOfficer}
+              alt="Doge officer approving $LEGAL passports"
+              width={1024}
+              height={1024}
+            />
+          </div>
+        </div>
+      </section>
 
       <section className="hero">
         <div className="hero-grid">
