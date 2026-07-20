@@ -1046,7 +1046,7 @@ function LegalPage() {
     </div>
   );
 }
-
+Adicionado link de staking
   
   
         
