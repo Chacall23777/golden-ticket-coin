@@ -946,13 +946,14 @@ function LegalPage() {
           <div className="pumpfun-seal">$L</div>
           <h3>{t.pumpfunH2}</h3>
           <p>{t.pumpfunP}</p>
-          
+          <a
             className="btn-primary"
             href="#"
             target="_blank"
             rel="noreferrer"
             onClick={fireConfetti}
           >
+
             {t.pumpfunBtn}
           </a>
           <span className="pumpfun-note">{t.pumpfunNote}</span>
