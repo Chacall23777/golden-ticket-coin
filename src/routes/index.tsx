@@ -608,9 +608,10 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
 function LegalPage() {
   const [lang, setLang] = useLang();
   const [copied, setCopied] = useState(false);
-  const [confetti, setConfetti] = useState
+  const [confetti, setConfetti] = useState<
     Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>
   >([]);
+
   const rootRef = useRef<HTMLDivElement>(null);
   const ca = "XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL";
   const t = tx[lang];
