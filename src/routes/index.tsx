@@ -982,13 +982,14 @@ function LegalPage() {
                 <b>◆</b> {t.buyChipSol}
               </span>
             </div>
-            
+            <a
               className="btn-buy"
               href="https://multitoken.com.br"
               target="_blank"
               rel="noreferrer"
               onClick={fireConfetti}
             >
+
               {t.buyBtn}
             </a>
             <span className="buy-fine">{t.buyFine}</span>
