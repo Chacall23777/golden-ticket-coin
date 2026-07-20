@@ -579,13 +579,14 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
   return (
     <section className="w3b-band" aria-label="WEB3BRASIL Community Partner">
       <div className="w3b-card reveal">
-        
+        <a
           className="w3b-logo-wrap"
           href="https://web3brasil.life"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WEB3BRASIL"
         >
+
           <img src={web3brasilLogo} alt="WEB3BRASIL logo" loading="lazy" width={1280} height={512} />
         </a>
         <div className="w3b-copy">
@@ -607,9 +608,10 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
 function LegalPage() {
   const [lang, setLang] = useLang();
   const [copied, setCopied] = useState(false);
-  const [confetti, setConfetti] = useState
+  const [confetti, setConfetti] = useState<
     Array<{ id: number; left: number; bg: string; delay: number; dur: number; rot: number }>
   >([]);
+
   const rootRef = useRef<HTMLDivElement>(null);
   const ca = "XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL";
   const t = tx[lang];
@@ -944,13 +946,14 @@ function LegalPage() {
           <div className="pumpfun-seal">$L</div>
           <h3>{t.pumpfunH2}</h3>
           <p>{t.pumpfunP}</p>
-          
+          <a
             className="btn-primary"
             href="#"
             target="_blank"
             rel="noreferrer"
             onClick={fireConfetti}
           >
+
             {t.pumpfunBtn}
           </a>
           <span className="pumpfun-note">{t.pumpfunNote}</span>
@@ -979,13 +982,14 @@ function LegalPage() {
                 <b>◆</b> {t.buyChipSol}
               </span>
             </div>
-            
+            <a
               className="btn-buy"
               href="https://multitoken.com.br"
               target="_blank"
               rel="noreferrer"
               onClick={fireConfetti}
             >
+
               {t.buyBtn}
             </a>
             <span className="buy-fine">{t.buyFine}</span>
@@ -1000,7 +1004,7 @@ function LegalPage() {
           <p>{t.communityP}</p>
         </div>
         <div className="social-row">
-          
+          <a
             className="social-pill"
             href="https://x.com/legal_elon"
             target="_blank"
@@ -1011,7 +1015,7 @@ function LegalPage() {
           <a className="social-pill" href="https://t.me/elonlegal" target="_blank" rel="noreferrer">
             Telegram
           </a>
-          
+          <a
             className="social-pill"
             href="https://coinmarketcap.com/community/profile/legal_"
             target="_blank"
@@ -1022,7 +1026,7 @@ function LegalPage() {
           <a className="social-pill" href="#" target="_blank" rel="noreferrer">
             Dex Screener
           </a>
-          
+          <a
             className="social-pill"
             href="https://solscan.io/token/XhHLJpJtEHJucpYpAti2JvNs6eYsjeuFjRj9wvvaLDL"
             target="_blank"
@@ -1030,6 +1034,7 @@ function LegalPage() {
           >
             Solscan
           </a>
+
         </div>
       </section>
 
