@@ -579,13 +579,14 @@ function Web3BrasilBanner({ t }: { t: Record<string, string> }) {
   return (
     <section className="w3b-band" aria-label="WEB3BRASIL Community Partner">
       <div className="w3b-card reveal">
-        
+        <a
           className="w3b-logo-wrap"
           href="https://web3brasil.life"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="WEB3BRASIL"
         >
+
           <img src={web3brasilLogo} alt="WEB3BRASIL logo" loading="lazy" width={1280} height={512} />
         </a>
         <div className="w3b-copy">
